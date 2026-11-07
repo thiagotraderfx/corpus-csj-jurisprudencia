@@ -1,49 +1,32 @@
-# Deuda técnica cerrada
+# Deuda técnica conocida (v1.1.0)
 
-## Fecha de cierre: 2026-11-06
+## Datos
+- Cobertura 202/32899 (0.6%) → crawl incremental semanal
+- Topic hit@5 53% → clasificador desde contenido (no desde portal)
+- 110 docs sin `fuente_formal` → extracción desde docx/pdf
+- 8 docs sin `sala` → derivada por radicado, verificar manual
+- 1 doc sin `tema` (AC6987-2026) → asignación manual
+- 986442 tiene docx+pdf → duplicado intencional, documentado
 
-### 1. Snapshot roto por archivos faltantes
-- **Bug**: `tar czf ... failures.jsonl` fallaba si el archivo no existía
-- **Fix**: placeholders creados al inicio (`touch`), tar incluye solo archivos existentes
-- **Verificación**: snapshot extraído en /tmp y validado
+## Evaluación
+- Sin eval de alucinación LLM → ~50 preguntas gold-standard
+- Sin benchmark alt embeddings → bge-m3, jina-v3
+- Topic eval depende del portal → re-anotar 50 docs
 
-### 2. Benchmark con metodología incorrecta
-- **Deuda**: medía unicidad de metadata, no calidad de retrieval
-- **Fix**: `benchmark_v2.py` con dos métodos:
-  - `retrieval_sanity` (query = chunk del doc): mide identidad
-  - `topic_retrieval` (query = tema único): mide cobertura, excluyendo duplicados
-- **Verificación**: sanity debe ser ≥95%, topic ≥75%
+## Infraestructura
+- Sin Dockerfile → añadir Dockerfile + compose
+- Sin deploy API → Fly.io / Railway
+- CI no corre `certify_v1_1.py` → job nocturno con secret
+- Sin rate limiting → slowapi
+- Sin logging estructurado → structlog + JSON lines
 
-### 3. Postproceso CJK integrado sin test
-- **Deuda**: cambio en `rag_ask.py` sin prueba end-to-end
-- **Fix**: `health_check.py` prueba `normalize_answer("【1】") → "[1]"`
-- **Verificación**: check #9 del health
+## Portabilidad
+- Termux `gh`/Go requiere `$PREFIX/etc/resolv.conf` → ver RECOVERY.md
+- `git add` silencioso con paths inexistentes → patrón `[ -e ]`
+- Release no atómico → `--draft` + upload uno a uno
 
-### 4. LLM `meta/llama-3.1-8b-instruct` retirado (410 Gone)
-- **Bug**: modelo hardcodeado que ya no existe
-- **Fix**: `get_available_models()` consulta `/v1/models` y filtra
-- **Verificación**: check #8 del health
-
-### 5. Headers/footers de DOCX no extraídos
-- **No es bug**, es decisión de diseño
-- **Justificación**: contienen radicado (redundante con metadatos) y "Página N" (no texto jurídico)
-- **Estado**: `docx_full_extract.py` los detecta pero `build_md_full.py` solo los incluye si son semánticamente significativos
-
-### 6. Duplicación de metadata en tutelas
-- **No es bug**, es característica del corpus CSJ
-- **Impacto**: retrieval por tema no puede distinguir 5+ tutelas con tema idéntico
-- **Mitigación**: `benchmark_v2.py` excluye temas duplicados del test de topic retrieval
-- **Uso real**: queries del usuario contienen detalles específicos, no solo el tema genérico
-
-## Criterio de salud
-
-El sistema se considera SANO si:
-- `health_check.py` retorna exit 0
-- `benchmark_v2.py` pasa ambos tests
-- Snapshot se extrae y valida en directorio limpio
-
-## Siguiente decisión
-
-Una vez `health_check.py` OK:
-- Si `retrieval_sanity ≥ 95%` y `topic_retrieval ≥ 75%`: escalar a 500-1000 docs
-- Si no: investigar antes de escalar
+## Prioridad sugerida
+1. Cobertura (6 meses)
+2. Clasificador `tema` (2 semanas)
+3. Eval alucinación (1 semana)
+4. Dockerfile + deploy API (2 días)

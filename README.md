@@ -1,5 +1,11 @@
 # Corpus CSJ — Corte Suprema de Justicia de Colombia
 
+[![Tests](https://github.com/thiagotraderfx/corpus-csj-jurisprudencia/actions/workflows/test.yml/badge.svg)](https://github.com/thiagotraderfx/corpus-csj-jurisprudencia/actions/workflows/test.yml)
+[![Release](https://img.shields.io/github/v/release/thiagotraderfx/corpus-csj-jurisprudencia)](https://github.com/thiagotraderfx/corpus-csj-jurisprudencia/releases)
+[![License](https://img.shields.io/badge/license-MIT%20%2B%20CC%20BY%204.0-blue)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
+
+
 ETL reproducible de jurisprudencia de la Corte Suprema de Justicia de
 Colombia, con API REST y RAG listo para consulta.
 

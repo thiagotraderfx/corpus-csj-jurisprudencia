@@ -1,30 +1,48 @@
-# Recuperación — Corpus CSJ v1.0
+# Recuperación y learnings (Termux/Android)
 
-## Restaurar desde snapshot
+## 1. DNS roto en binarios Go (gh, go, hugo)
 
-    tar xzf corpus_csj_v1.0_CERTIFIED_*.tar.gz -C /ruta/destino/
-    cd /ruta/destino/
-    python3 finalize_v1.py
-    python3 benchmark_v2.py
-    python3 health_check.py
+Síntoma: curl a api.github.com → 200, pero gh falla con "no such host".
+Causa: Go busca /etc/resolv.conf; Android no lo provee. Cae en [::1]:53.
 
-## Regenerar embeddings
+Fix permanente:
 
-    source ~/.csj_keys
-    python3 m062_rebuild.py
+    mkdir -p "$PREFIX/etc"
+    printf 'nameserver 8.8.8.8\nnameserver 1.1.1.1\n' > "$PREFIX/etc/resolv.conf"
 
-## Verificar integridad
+Afecta solo a binarios Go; curl sigue con el resolver de Android.
 
-    python3 audit_corpus.py
-    python3 benchmark_v2.py
-    python3 health_check.py
-    python3 -m pytest tests/ -q
+## 2. /tmp no escribible
 
-## Contenido del snapshot
+Síntoma: tee /tmp/x → Permission denied.
+Fix: usar `mktemp` (respeta $TMPDIR) o $PREFIX/tmp. Nunca /tmp/x hardcodeado.
 
-- raw/            Documentos byte-exact (SHA-256 en manifest)
-- md/             Markdown con frontmatter
-- chunks/         Chunks por documento
-- embeddings/     passages.npy + ids + meta.json
-- manifest.jsonl  Provenance por RAW
-- tests/          Suite pytest
+## 3. git add falla silencioso con paths inexistentes
+
+Síntoma: git add a.py b.py c.py con b.py inexistente → exit 128, nada
+staged, mensaje oculto por 2>/dev/null.
+Fix: verificar `[ -e "$f" ]` antes de añadir.
+
+## 4. gh release create no atómico
+
+Síntoma: subir 4 assets falla a mitad → draft huérfano con assets
+parciales (tag untagged-<hash>). gh release delete v1.1.0 no lo borra.
+
+Fix robusto:
+
+    gh release create v1.1.0 --draft --notes-file notes.md
+    for f in dist/*.tar.gz dist/SHA256SUMS; do
+        gh release upload v1.1.0 "$f" --clobber
+    done
+    gh release edit v1.1.0 --draft=false --latest
+
+Borrar huérfano por API:
+
+    gh api repos/$REPO/releases --jq '.[]|select(.draft)|.id'
+    gh api repos/$REPO/releases/$ID -X DELETE
+
+## 5. Paste de heredocs largos en Termux
+
+Pegar un bloque a la vez. Si queda `>` prompt, Ctrl+C (NO Ctrl+D).
+Verificar `git status` antes de reintentar. Usar 4 espacios de
+indentación en lugar de ``` ``` ``` para que nada se manglera.
