@@ -1,29 +1,63 @@
 {
-  "generated_at": "2026-11-06T21:42:22+00:00",
+  "generated_at": "2026-11-07T21:07:40.756266+00:00",
   "corpus": "Corte Suprema de Justicia — Colombia",
+  "version": "v1.1.4",
   "raw": {
-    "total_records": 3,
+    "total_records": 202,
     "by_ext": {
-      "docx": 2,
+      "docx": 201,
       "pdf": 1
     },
-    "total_bytes": 4068603
+    "total_bytes": 163196753
   },
   "md": {
-    "total_files": 3
+    "total_files": 201
   },
   "chunks": {
-    "total": 31,
+    "total": 10991,
     "by_section": {
-      "INTRO": 3,
-      "**ANTECEDENTES**": 4,
-      "**CONSIDERACIONES**": 18,
-      "DECISIÓN": 1,
-      "**RESUELVE**": 2,
-      "Anexos del documento": 2,
-      "**DECISIÓN**": 1
+      "CONSIDERACIONES": 4968,
+      "ANTECEDENTES": 3160,
+      "INTRO": 1654,
+      "Anexos del documento": 404,
+      "DECISIÓN": 294,
+      "*CONSIDERACIONES*": 188,
+      "RESUELVE": 171,
+      "RESUELVE:": 87,
+      "*Resuelve:*": 30,
+      "CONSIDERACIONES DE LA CORTE": 25,
+      "Problema jurídico": 9,
+      "*RESUELVE*": 1
     },
-    "chars_total": 22852,
-    "chars_avg": 737
+    "chars_total": 10764701,
+    "chars_avg": 979
+  },
+  "by_year": {
+    "2022": 50,
+    "2023": 25,
+    "2024": 97,
+    "2025": 27,
+    "2026": 3
+  },
+  "by_sala": {
+    "SALA DE CASACIÓN CIVIL": 36,
+    "SALA DE CASACIÓN CIVIL Y AGRARIA": 22,
+    "SALA DE CASACIÓN CIVIL, AGRARIA Y RURAL": 46,
+    "SALA DE CASACIÓN LABORAL": 32,
+    "SALA DE CASACIÓN PENAL": 1,
+    "SALA DE CASACIÓN PENAL - SALA DE DECISIÓN DE TUTELAS": 16,
+    "SALA DE DESCONGESTIÓN LABORAL N.º 1": 14,
+    "SALA DE DESCONGESTIÓN LABORAL N.º 2": 10,
+    "SALA DE DESCONGESTIÓN LABORAL N.º 3": 11,
+    "SALA DE DESCONGESTIÓN LABORAL N.º 4": 13,
+    "SALA ESPECIAL DE PRIMERA INSTANCIA": 1
+  },
+  "by_tipo": {
+    "AUTO": 4,
+    "AUTO INTERLOCUTORIO": 1,
+    "SENTENCIA": 185,
+    "SENTENCIA COMPLEMENTARIA": 1,
+    "SENTENCIA DE INSTANCIA": 7,
+    "SENTENCIA SUSTITUTIVA": 4
   }
 }

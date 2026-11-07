@@ -14,21 +14,25 @@ Colombia, con API REST y RAG listo para consulta.
 
 > **Aviso legal.** Este repositorio redistribuye providencias públicas descargadas del portal `consultajurisprudencial.ramajudicial.gov.co`. No reclama derechos sobre los documentos originales (ver [LICENSE](LICENSE)). Si usted es titular de derechos y desea el retiro de algún contenido, abra un issue y se atenderá a la brevedad.
 
-## Estado (v1.1.0 — CERTIFIED 13/13)
+## Estado (v1.1.4 — CERTIFIED 13/13)
 
 | Componente | Valor |
 | --- | --- |
-| Documentos RAW | 202 archivos (201 docs únicos, 986442 tiene docx+pdf) |
+| Documentos RAW | 201 archivos |
 | Markdown | 201 |
-| Chunks | 10 991 |
+| Chunks | 10,991 |
 | Embeddings | NVIDIA `nemotron-3-embed-1b` (2048d) |
-| Sanity hit@5 | 99.5% (retrieval por contenido) |
-| Topic hit@5 | ~53% (limitado por metadata del portal — ver `DATA_QUALITY.md`) |
+| **Sanity hit@5** | **99.50%** (n=201) |
+| Sanity precision@5 | 57.71% |
+| Sanity MRR | 0.978 |
+| **Topic hit@5** | **72.34%** (n=141) |
+| Topic precision@5 | 35.60% |
+| Topic MRR | 0.616 |
 | API REST | 13 endpoints |
-| Tests | 14/14 local · 10+4 skip en CI |
+| Tests | 14/14 local · 4+10 skip en CI |
 | Certificación | 13/13 → `v1.1.0-certified.json` |
 
-Distribución por año: 2022 (50), 2023 (25), 2024 (98), 2025 (26), 2026 (2).
+Distribución por año: 2022 (50), 2023 (25), 2024 (97), 2025 (27), 2026 (3).
 
 ## Inicio rápido
 

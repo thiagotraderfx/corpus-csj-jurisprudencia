@@ -14,7 +14,7 @@ health_ok = (ROOT / "health_final.log").is_file() and \
 
 try:
     r = subprocess.run(
-        [sys.executable, "-m", "pytest", "tests/", "test_api.py", "-q", "--no-header"],
+        [sys.executable, "-m", "pytest", "tests/", "-q", "--no-header"],
         capture_output=True, text=True, timeout=120, cwd=str(ROOT),
     )
     tests_pass = r.returncode == 0

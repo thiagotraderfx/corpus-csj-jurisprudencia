@@ -30,3 +30,15 @@
 2. Clasificador `tema` (2 semanas)
 3. Eval alucinación (1 semana)
 4. Dockerfile + deploy API (2 días)
+
+## Descubierto 2026-11-07 (auditoría v1.1.4)
+
+| Deuda | Impacto | Estado |
+| --- | --- | --- |
+| ~~`stats.json` era de 3 docs~~ | API servía métricas falsas | ✅ Resuelto (regenerado) |
+| ~~`year` ausente en manifest~~ | Bloqueaba estratificación | ✅ Resuelto (derivado de `providencia`) |
+| README decía topic hit@5 = ~53% (real 72.34%) | Deshonestidad técnica | ✅ Resuelto (corregido) |
+| `certify_v1_1.py` llamaba `pytest tests/ test_api.py` | Path inexistente tras mover `test_api.py` | ✅ Resuelto (1 línea) |
+| `api_stats_version` compara `== "1.1.0"` hardcoded | Fallará en v1.2.0 | ⏳ Actualizar a `startswith("1.")` |
+| Topic hit@5 medido solo sobre 141/202 docs (70%) | Falta cobertura en 61 docs sin `tema` | ⏳ Documentado en DATA_QUALITY |
+| Disco al 98% (1.2 GB libres) | Bloquea crawl 500 | ⏳ Pendiente limpieza |
