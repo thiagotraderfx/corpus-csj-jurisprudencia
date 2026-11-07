@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "created_at": "2026-11-07",
+    "objective": "500 sentencias estratificadas, corrigiendo sesgo Penal/Laboral 2025-2026",
+    "current_total": 197,
+    "target_total": 500,
+    "to_crawl": 329,
+    "crawler_supports": "m062_crawler_byid.py --type sentencia --year N --sala X",
+    "dedup": "Automática por row_key + SHA-256 en manifest (verificado en código)"
+  },
+  "2022__civil": 11,
+  "2022__laboral": 22,
+  "2022__penal": 37,
+  "2023__civil": 18,
+  "2023__laboral": 20,
+  "2023__penal": 37,
+  "2024__penal": 20,
+  "2025__civil": 5,
+  "2025__laboral": 40,
+  "2025__penal": 39,
+  "2026__civil": 20,
+  "2026__laboral": 20,
+  "2026__penal": 40
+}
