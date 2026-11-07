@@ -7,11 +7,11 @@ authors:
 version: "1.1.0"
 date-released: 2026-11-07
 license: "MIT"
+repository-code: "https://github.com/thiagotraderfx/corpus-csj-jurisprudencia"
+url: "https://github.com/thiagotraderfx/corpus-csj-jurisprudencia"
 keywords:
   - jurisprudencia
   - Corte Suprema de Justicia
   - Colombia
   - ETL
   - RAG
-  - derecho
-  - legal NLP

@@ -22,7 +22,7 @@ Distribución por año: 2022 (50), 2023 (25), 2024 (98), 2025 (26), 2026 (2).
 ## Inicio rápido
 
 ```bash
-git clone https://github.com/USUARIO/corpus-csj-jurisprudencia.git
+git clone https://github.com/thiagotraderfx/corpus-csj-jurisprudencia.git
 cd corpus-csj-jurisprudencia
 
 # Assets (raw + embeddings) — descargar del release
