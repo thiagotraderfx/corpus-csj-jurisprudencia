@@ -4,8 +4,8 @@ message: "Si usa este corpus en investigación, cítelo con este formato."
 type: dataset
 authors:
   - name: "Contribuidores del Corpus CSJ"
-version: "1.1.2"
-date-released: 2026-11-09
+version: "1.1.4"
+date-released: 2026-11-07
 license: "MIT"
 repository-code: "https://github.com/thiagotraderfx/corpus-csj-jurisprudencia"
 url: "https://github.com/thiagotraderfx/corpus-csj-jurisprudencia"
