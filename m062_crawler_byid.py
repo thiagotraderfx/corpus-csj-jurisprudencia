@@ -383,6 +383,10 @@ def main():
 
             manifest = download_by_id(sess, doc_id, args.format, search_id)
 
+            # FIX 2026-11-07: propagar sala y year (download_by_id no los deriva)
+            manifest["sala"] = cand["sala"]
+            manifest["year"] = extract_year(cand["fecha"])
+
             # Verificación anti-duplicado
             existing_shas = {r.get("sha256") for r in load_all(MANIFEST)}
             if manifest["sha256"] in existing_shas:
