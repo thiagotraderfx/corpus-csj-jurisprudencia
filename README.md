@@ -1,6 +1,5 @@
 # Corpus CSJ — Corte Suprema de Justicia de Colombia
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
 [![Tests](https://github.com/thiagotraderfx/corpus-csj-jurisprudencia/actions/workflows/test.yml/badge.svg)](https://github.com/thiagotraderfx/corpus-csj-jurisprudencia/actions/workflows/test.yml)
 [![Release](https://img.shields.io/github/v/release/thiagotraderfx/corpus-csj-jurisprudencia)](https://github.com/thiagotraderfx/corpus-csj-jurisprudencia/releases)
