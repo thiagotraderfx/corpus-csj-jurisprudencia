@@ -1,0 +1,54 @@
+{
+  "certified_at": "2026-11-07T21:18:06.508411+00:00",
+  "certification_id": "CSJ-v1.1.4-20261107T211806Z",
+  "corpus_version": "v1.1.4",
+  "status": "CERTIFIED",
+  "checks_passed": 13,
+  "checks_total": 13,
+  "corpus": {
+    "docs": 202,
+    "chunks": 10991,
+    "md_files": 201,
+    "by_year": {
+      "2022": 50,
+      "2023": 25,
+      "2024": 97,
+      "2025": 27,
+      "2026": 3
+    },
+    "by_sala": {
+      "SALA DE CASACIÓN CIVIL": 36,
+      "SALA DE CASACIÓN CIVIL Y AGRARIA": 22,
+      "SALA DE CASACIÓN CIVIL, AGRARIA Y RURAL": 46,
+      "SALA DE CASACIÓN LABORAL": 32,
+      "SALA DE CASACIÓN PENAL": 1,
+      "SALA DE CASACIÓN PENAL - SALA DE DECISIÓN DE TUTELAS": 16,
+      "SALA DE DESCONGESTIÓN LABORAL N.º 1": 14,
+      "SALA DE DESCONGESTIÓN LABORAL N.º 2": 10,
+      "SALA DE DESCONGESTIÓN LABORAL N.º 3": 11,
+      "SALA DE DESCONGESTIÓN LABORAL N.º 4": 13,
+      "SALA ESPECIAL DE PRIMERA INSTANCIA": 1
+    },
+    "by_tipo": {
+      "AUTO": 4,
+      "AUTO INTERLOCUTORIO": 1,
+      "SENTENCIA": 185,
+      "SENTENCIA COMPLEMENTARIA": 1,
+      "SENTENCIA DE INSTANCIA": 7,
+      "SENTENCIA SUSTITUTIVA": 4
+    }
+  },
+  "benchmark": {
+    "sanity_hit@5": 0.9950248756218906,
+    "sanity_precision@5": 0.5771144278606966,
+    "sanity_mrr": 0.9777777777777777,
+    "topic_hit@5": 0.723404255319149,
+    "topic_precision@5": 0.35602836879432626,
+    "topic_mrr": 0.6160756501182033
+  },
+  "tests": {
+    "local": "14/14",
+    "ci": "4 passed, 10 skipped"
+  },
+  "api_endpoints": 13
+}
