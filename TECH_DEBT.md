@@ -43,30 +43,34 @@
 | Topic hit@5 medido solo sobre 141/202 docs (70%) | Falta cobertura en 61 docs sin `tema` | ⏳ Documentado en DATA_QUALITY |
 | Disco al 98% (1.2 GB libres) | Bloquea crawl 500 | ⏳ Pendiente limpieza |
 
-## Incidente 2026-11-07 22:10 — Portal CSJ soft-block
+## Diagnóstico 2026-11-07 23:00 — Portal CSJ no soporta crawl masivo
 
-**Síntoma**: tras 6+ bootstraps JSF en 90 min (test 2024, test 2023,
-intento crawl, 2 dry-runs, comparativa de 5 temas), el portal
-comenzó a devolver **1 sola fila** para cualquier query, sin importar
-tema o año. Sin 429, sin captcha, sin 403.
+**Diagnóstico ERRÓNEO previo**: se pensó que era soft-block por sesiones.
+**Diagnóstico correcto**: el portal **funciona normalmente**, pero:
 
-**Evidencia**:
-- 21:00 (2024 penal, mismo código, misma IP): 368 filas
-- 22:10 (2022, cualquier tema): 1 fila
-- `casación` para 2022 completo devolviendo 1 fila es imposible
+1. Devuelve **1 sola fila por página** (no configurable, paginator override rechazado con HTTP 500)
+2. Para 2022 hay **30,198 documentos** totales (confirmado en HTML: `Resultado: 1 / 30198`)
+3. Cada request AJAX tarda ~8s
+4. Búsqueda por tema+año devuelve decenas de miles de resultados → imposible crawlear todos
 
-**Diagnóstico**: soft-block del portal por número de sesiones JSF
-desde la misma IP en ventana corta. Degrada respuestas en lugar de
-bloquear explícitamente.
+**Cálculo del bloqueo**:
+- Crawlear 37 penal 2022: paginar ~25,000 páginas × 8s = **55 horas por celda**
+- 13 celdas pendientes del plan → **700+ horas (30 días sin parar)**
 
-**Fix inmediato**: NO tocar el portal 90-120 min. El contador
-server-side debe decaer.
+**Cómo se crawlearon los 202 docs originales**:
+- No fue por búsqueda tema+año
+- Fue por **`id_filter`** (búsqueda de ID específico, 1 doc por request directo, sin paginar)
+- Acumulación de IDs durante semanas
 
-**Patches pendientes** (para el reintento):
-1. `m062_crawler_byid.py`: `--max-pages` arg (hoy es `range(1, 10001)` fijo)
+**Modelo viable**:
+- `crawl_by_ids.py` (por crear): busca IDs manualmente o desde semilla externa, crawlea por ID
+- Ritmo realista: 20-50 docs/semana
+- Objetivo 500 docs: **6-10 semanas**, no 5 días
+
+**Cambios pendientes para crawler masivo** (si algún día el portal cambia):
+1. `m062_crawler_byid.py`: `--max-pages` arg
 2. `m062_crawler_byid.py`: default `--search-tema` de `"contrato"` → `""`
-3. `scripts/crawl_500.py`: `--delay 3.0`, `sleep 60` entre celdas,
-   pasar `--search-tema ""` explícito y `--max-pages 20`
-4. Rotación de User-Agent en `Session.__init__`
+3. `scripts/crawl_500.py`: pasar `--search-tema ""` explícito, `--max-pages 20`
+4. Filtro de sala server-side: investigar payload del navegador con DevTools (Opción C)
 
-**Frecuencia máxima segura**: 1 sesión cada 5 min, 30 docs/celda máximo.
+**Estado actual**: corpus 207 docs (212 con los 5 penales crawleados hoy), certificado 13/13, publicado con DOI. Aceptable para uso investigativo. Limitaciones documentadas honestamente.
