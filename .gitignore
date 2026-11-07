@@ -53,3 +53,12 @@ scale_a.log
 crawl500.log
 crawl100.log
 api.log
+
+# Intermedios y artefactos de debugging
+txt/
+/index_*.html
+/searches.jsonl
+/benchmark_report.json
+/*.docx
+*.har
+

@@ -22,7 +22,7 @@ Colombia, con API REST y RAG listo para consulta.
 | Sanity hit@5 | 99.5% (retrieval por contenido) |
 | Topic hit@5 | ~53% (limitado por metadata del portal — ver `DATA_QUALITY.md`) |
 | API REST | 13 endpoints |
-| Tests | 6/6 |
+| Tests | 14/14 local · 10+4 skip en CI |
 | Certificación | 13/13 → `v1.1.0-certified.json` |
 
 Distribución por año: 2022 (50), 2023 (25), 2024 (98), 2025 (26), 2026 (2).
@@ -86,6 +86,12 @@ curl -s -X POST http://localhost:8000/ask \
 ├── m063_rebuild_chunks_only.py Re-chunk sin re-embed
 ├── re_embed_nvidia.py          Re-embed NVIDIA con checkpoint
 ├── rag_query.py, rag_ask.py    CLI retrieval / RAG
+├── embed_local_tfidf.py        Fallback offline (TF-IDF, sin API key)
+├── embed_unified.py            NVIDIA → OpenRouter → TF-IDF
+├── embed_with_nim.py           Wrapper NVIDIA NIM
+├── legacy/                     m060, m061, docx_extract (histórico)
+├── scripts/                    sanitize_har, 01_reconocer_relatoria
+├── reports/                    Provenance del scoping del crawl
 ├── embedding_client.py         Cliente unificado
 ├── benchmark_v2.py             Sanity + topic retrieval
 ├── certify_v1_1.py             Certificación 13 checks

@@ -1,0 +1,685 @@
+{
+  "project": "corpus_corte_suprema",
+  "source": "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/csj/index.xhtml",
+  "timestamp_utc": "2026-11-06T18:05:42.128359+00:00",
+  "status": "completed",
+  "findings": {
+    "http": {
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 86722,
+      "sha256": "af151b050b5d8f5e06a85aa1bb3dbe03fe63c8d1bf781f3cc6942c222ab168b7",
+      "final_url": "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/csj/index.xhtml"
+    },
+    "technologies": {
+      "JSF ViewState": 10,
+      "Jakarta Faces": 0,
+      "PrimeFaces": 193,
+      "Faces AJAX": 0,
+      "Partial Execute": 0,
+      "Partial Render": 0,
+      "RichFaces": 0,
+      "OmniFaces": 0,
+      "XMLHttpRequest": 0
+    },
+    "forms": [
+      {
+        "id": "mainForm",
+        "name": "mainForm",
+        "action": "/WebRelatoria/csj/index.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287",
+        "method": "post",
+        "enctype": "application/x-www-form-urlencoded"
+      },
+      {
+        "id": "downloadOptionsForm",
+        "name": "downloadOptionsForm",
+        "action": "/WebRelatoria/csj/index.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287",
+        "method": "post",
+        "enctype": "application/x-www-form-urlencoded"
+      },
+      {
+        "id": "footerForm",
+        "name": "footerForm",
+        "action": "/WebRelatoria/csj/index.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287",
+        "method": "post",
+        "enctype": "application/x-www-form-urlencoded"
+      },
+      {
+        "id": "searchForm",
+        "name": "searchForm",
+        "action": "/WebRelatoria/csj/index.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287",
+        "method": "post",
+        "enctype": "application/x-www-form-urlencoded"
+      },
+      {
+        "id": "resultForm",
+        "name": "resultForm",
+        "action": "/WebRelatoria/csj/index.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287",
+        "method": "post",
+        "enctype": "application/x-www-form-urlencoded"
+      }
+    ],
+    "inputs": [
+      {
+        "type": "hidden",
+        "id": null,
+        "name": "mainForm",
+        "value": "mainForm"
+      },
+      {
+        "type": "hidden",
+        "id": "j_id1:javax.faces.ViewState:0",
+        "name": "javax.faces.ViewState",
+        "value": "[REDACTADO]"
+      },
+      {
+        "type": "hidden",
+        "id": null,
+        "name": "downloadOptionsForm",
+        "value": "downloadOptionsForm"
+      },
+      {
+        "type": "hidden",
+        "id": "j_id1:javax.faces.ViewState:0",
+        "name": "javax.faces.ViewState",
+        "value": "[REDACTADO]"
+      },
+      {
+        "type": "hidden",
+        "id": null,
+        "name": "footerForm",
+        "value": "footerForm"
+      },
+      {
+        "type": "hidden",
+        "id": "j_id1:javax.faces.ViewState:0",
+        "name": "javax.faces.ViewState",
+        "value": "[REDACTADO]"
+      },
+      {
+        "type": "hidden",
+        "id": null,
+        "name": "searchForm",
+        "value": "searchForm"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:temaInput",
+        "name": "searchForm:temaInput",
+        "value": null
+      },
+      {
+        "type": "text",
+        "id": "searchForm:scivil_focus",
+        "name": "searchForm:scivil_focus",
+        "value": null
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:scivil:0",
+        "name": "searchForm:scivil",
+        "value": "SALA DE CASACIÓN CIVIL"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:slaboral_focus",
+        "name": "searchForm:slaboral_focus",
+        "value": null
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:slaboral:0",
+        "name": "searchForm:slaboral",
+        "value": "SALA DE DESCONGESTIÓN LABORAL N.º 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:slaboral:1",
+        "name": "searchForm:slaboral",
+        "value": "SALA DE DESCONGESTIÓN LABORAL N.º 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:slaboral:2",
+        "name": "searchForm:slaboral",
+        "value": "SALA DE DESCONGESTIÓN LABORAL N.º 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:slaboral:3",
+        "name": "searchForm:slaboral",
+        "value": "SALA DE DESCONGESTIÓN LABORAL N.º 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:slaboral:4",
+        "name": "searchForm:slaboral",
+        "value": "SALA DE CASACIÓN LABORAL"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:spenal_focus",
+        "name": "searchForm:spenal_focus",
+        "value": null
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:spenal:0",
+        "name": "searchForm:spenal",
+        "value": "Sala Especial de Primera Instancia"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:spenal:1",
+        "name": "searchForm:spenal",
+        "value": "Sala Especial de Instrucción"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:spenal:2",
+        "name": "searchForm:spenal",
+        "value": "Sala de Casación Penal"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:splena_focus",
+        "name": "searchForm:splena_focus",
+        "value": null
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:splena:0",
+        "name": "searchForm:splena",
+        "value": "SALA PLENA"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:j_idt188:0",
+        "name": "searchForm:j_idt188",
+        "value": "CONSTITUCIONAL"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:j_idt188:1",
+        "name": "searchForm:j_idt188",
+        "value": "NEGOCIOS_GENERALES"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:tutelaselect:0",
+        "name": "searchForm:tutelaselect",
+        "value": "ASUNTOS DE SALA"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:tutelaselect:1",
+        "name": "searchForm:tutelaselect",
+        "value": "TUTELA"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:tutelaselect:2",
+        "name": "searchForm:tutelaselect",
+        "value": "TODO"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:relevanteselect:0",
+        "name": "searchForm:relevanteselect",
+        "value": "RELEVANTE"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:relevanteselect:1",
+        "name": "searchForm:relevanteselect",
+        "value": "PUBLICADA"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:relevanteselect:2",
+        "name": "searchForm:relevanteselect",
+        "value": ""
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:options1:0",
+        "name": "searchForm:options1",
+        "value": "0"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:options1:1",
+        "name": "searchForm:options1",
+        "value": "4"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:options1:2",
+        "name": "searchForm:options1",
+        "value": "1"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:options1:3",
+        "name": "searchForm:options1",
+        "value": "2"
+      },
+      {
+        "type": "radio",
+        "id": "searchForm:options1:4",
+        "name": "searchForm:options1",
+        "value": "3"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:fulltxtInput",
+        "name": "searchForm:fulltxtInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-fulltxt_collapsed",
+        "name": "searchForm:set-fulltxt_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "checkbox",
+        "id": "searchForm:j_idt206_input",
+        "name": "searchForm:j_idt206_input",
+        "value": null
+      },
+      {
+        "type": "text",
+        "id": "searchForm:ponenteInput",
+        "name": "searchForm:ponenteInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-ponente_collapsed",
+        "name": "searchForm:set-ponente_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:fechaIniCal",
+        "name": "searchForm:fechaIniCal",
+        "value": null
+      },
+      {
+        "type": "text",
+        "id": "searchForm:fechaFinCal",
+        "name": "searchForm:fechaFinCal",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-fecha_collapsed",
+        "name": "searchForm:set-fecha_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:radicadoInput",
+        "name": "searchForm:radicadoInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-radicado_collapsed",
+        "name": "searchForm:set-radicado_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:providenciaInput",
+        "name": "searchForm:providenciaInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-providencia_collapsed",
+        "name": "searchForm:set-providencia_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:idInput",
+        "name": "searchForm:idInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-id_collapsed",
+        "name": "searchForm:set-id_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:tipoInput",
+        "name": "searchForm:tipoInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-tipo_collapsed",
+        "name": "searchForm:set-tipo_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:claseInput",
+        "name": "searchForm:claseInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-clase_collapsed",
+        "name": "searchForm:set-clase_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:fuenteInput",
+        "name": "searchForm:fuenteInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-fuente_collapsed",
+        "name": "searchForm:set-fuente_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:jurisInput",
+        "name": "searchForm:jurisInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-juris_collapsed",
+        "name": "searchForm:set-juris_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:procedenciaInput",
+        "name": "searchForm:procedenciaInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-procedencia_collapsed",
+        "name": "searchForm:set-procedencia_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:delitosInput",
+        "name": "searchForm:delitosInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-delitos_collapsed",
+        "name": "searchForm:set-delitos_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:sujetosInput",
+        "name": "searchForm:sujetosInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-sujetos_collapsed",
+        "name": "searchForm:set-sujetos_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:servidorInput",
+        "name": "searchForm:servidorInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-servidor_collapsed",
+        "name": "searchForm:set-servidor_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "text",
+        "id": "searchForm:categoriaInput",
+        "name": "searchForm:categoriaInput",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "searchForm:set-categoria_collapsed",
+        "name": "searchForm:set-categoria_collapsed",
+        "value": "true"
+      },
+      {
+        "type": "hidden",
+        "id": "j_id1:javax.faces.ViewState:0",
+        "name": "javax.faces.ViewState",
+        "value": "[REDACTADO]"
+      },
+      {
+        "type": "hidden",
+        "id": null,
+        "name": "resultForm",
+        "value": "resultForm"
+      },
+      {
+        "type": "checkbox",
+        "id": null,
+        "name": "resultForm:jurisTable_checkbox",
+        "value": null
+      },
+      {
+        "type": "hidden",
+        "id": "resultForm:jurisTable_selection",
+        "name": "resultForm:jurisTable_selection",
+        "value": ""
+      },
+      {
+        "type": "hidden",
+        "id": "j_id1:javax.faces.ViewState:0",
+        "name": "javax.faces.ViewState",
+        "value": "[REDACTADO]"
+      }
+    ],
+    "selects": [],
+    "buttons": [
+      {
+        "id": "buttonHeadTwitter",
+        "name": "buttonHeadTwitter",
+        "type": "submit"
+      },
+      {
+        "id": "buttonHeadFacebook",
+        "name": "buttonHeadFacebook",
+        "type": "submit"
+      },
+      {
+        "id": "buttonHeadYoutube",
+        "name": "buttonHeadYoutube",
+        "type": "submit"
+      },
+      {
+        "id": "downloadOptionsForm:j_idt156",
+        "name": "downloadOptionsForm:j_idt156",
+        "type": "submit"
+      },
+      {
+        "id": "downloadOptionsForm:j_idt161",
+        "name": "downloadOptionsForm:j_idt161",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:temaList",
+        "name": "searchForm:temaList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:ponenteList",
+        "name": "searchForm:ponenteList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:tipoList",
+        "name": "searchForm:tipoList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:claseList",
+        "name": "searchForm:claseList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:fuenteList",
+        "name": "searchForm:fuenteList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:procedenciaList",
+        "name": "searchForm:procedenciaList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:delitosList",
+        "name": "searchForm:delitosList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:servidorList",
+        "name": "searchForm:servidorList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:categoriaList",
+        "name": "searchForm:categoriaList",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:searchButton",
+        "name": "searchForm:searchButton",
+        "type": "submit"
+      },
+      {
+        "id": "searchForm:j_idt264",
+        "name": "searchForm:j_idt264",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt273",
+        "name": "resultForm:j_idt273",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt274",
+        "name": "resultForm:j_idt274",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt275",
+        "name": "resultForm:j_idt275",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt276",
+        "name": "resultForm:j_idt276",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:hidebutton",
+        "name": "resultForm:hidebutton",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:selectAllButton",
+        "name": "resultForm:selectAllButton",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt289",
+        "name": "resultForm:j_idt289",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt290",
+        "name": "resultForm:j_idt290",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt292_button",
+        "name": "resultForm:j_idt292_button",
+        "type": "submit"
+      },
+      {
+        "id": "resultForm:j_idt292_menuButton",
+        "name": "resultForm:j_idt292_menuButton",
+        "type": "button"
+      }
+    ],
+    "relevant_links": [],
+    "scripts": [
+      "http://52.10.218.167/api/tematres.js",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/jquery/jquery.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/jquery/jquery-plugins.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/core.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/components.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/layout/layout.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/scrollpanel/scrollpanel.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/hotkey/hotkey.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=primefaces&v=6.0",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/calendar_es.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=js",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/util.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=js",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/ajaxCaller.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=js",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/prototype.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=js",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/effects.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=js",
+      "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/javax.faces.resource/timeout.js.xhtml;jsessionid=C18A4AE57EA21A35070D180A90F48287?ln=js"
+    ],
+    "ajax": {
+      "PrimeFaces\\.ab\\s*\\([^;]{0,800}": [
+        "PrimeFaces.ab({s:\"j_idt136\",e:\"toggle\",p:\"j_idt136\",u:\"resultForm:hidebutton resultForm:hidebutton2 resultForm:jurisTable\"},ext)",
+        "PrimeFaces.ab({s:&quot",
+        "PrimeFaces.ab({s:&quot",
+        "PrimeFaces.ab({s:&quot",
+        "PrimeFaces.ab({s:&quot",
+        "PrimeFaces.ab({s:&quot",
+        "PrimeFaces.ab({s:&quot",
+        "PrimeFaces.ab({s:\"searchForm:set-tema\",e:\"toggle\",p:\"searchForm:set-tema\",u:\"searchForm:set-tema\"},ext)",
+        "PrimeFaces.ab({s:\"searchForm:scivil\",e:\"toggleSelect\",p:\"searchForm:scivil\",u:\"searchForm:scivil\"},ext)",
+        "PrimeFaces.ab({s:\"searchForm:scivil\",e:\"change\",p:\"searchForm:scivil\",u:\"searchForm:scivil\"},ext)"
+      ],
+      "faces\\.ajax\\.request\\s*\\([^;]{0,800}": [],
+      "XMLHttpRequest": [],
+      "\\.xhtml(?:\\?[^'\\\"\\s]*)?": [
+        ".xhtml?ln=primefaces-aristo",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml",
+        ".xhtml"
+      ],
+      "javax\\.faces\\.partial\\.execute": [],
+      "javax\\.faces\\.partial\\.render": []
+    },
+    "viewstate": {
+      "present": true,
+      "count": 5
+    },
+    "robots": {
+      "error": "HTTP Error 404: "
+    }
+  },
+  "errors": []
+}
