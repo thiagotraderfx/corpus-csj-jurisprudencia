@@ -1,0 +1,65 @@
+{
+  "certificate_id": "CSJ-v1.1.0-20261107T164629Z",
+  "version": "1.1.0",
+  "certified": true,
+  "certified_at": "2026-11-07T16:46:29+00:00",
+  "checks": {
+    "docs_count_100": true,
+    "chunks_gt_6000": true,
+    "duplicates_field": true,
+    "md_files_complete": true,
+    "sanity_hit_ge_95": true,
+    "topic_hit_ge_50": true,
+    "health_ok": true,
+    "tests_pass": true,
+    "api_importable": true,
+    "api_health_ok": true,
+    "api_stats_has_duplicates": true,
+    "api_stats_version": true,
+    "api_openapi": true
+  },
+  "summary": {
+    "version": "1.0",
+    "docs": 101,
+    "chunks": 6158,
+    "tipos": {
+      "auto": 2,
+      "sentencia": 99
+    },
+    "salas": {
+      "civil": 11,
+      "tutela": 51,
+      "laboral": 38,
+      "especial": 1
+    },
+    "years": {
+      "2024": 98,
+      "2025": 1,
+      "2026": 2
+    },
+    "raw_bytes": 79429477,
+    "md_files": 102,
+    "duplicates_sha256": 0,
+    "embeddings": {
+      "provider": "nvidia",
+      "model": "nvidia/nemotron-3-embed-1b",
+      "dim": 2048
+    },
+    "benchmark": {
+      "sanity_hit@5": 0.9900990099009901,
+      "sanity_mrr": 0.976072607260726,
+      "topic_hit@5": 0.7948717948717948,
+      "topic_mrr": 0.6305555555555555
+    }
+  },
+  "api": {
+    "routes": 13
+  },
+  "benchmark": {
+    "sanity_hit_at_5": 0.9950248756218906,
+    "sanity_mrr": 0.9777777777777777,
+    "topic_hit_at_5": 0.723404255319149,
+    "topic_mrr": 0.6160756501182033
+  },
+  "tests_tail": "stclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n14 passed, 1 warning in 3.46s\n"
+}

@@ -1,0 +1,56 @@
+{
+  "certificate_id": "CSJ-v1.0.0-20261107T015201Z",
+  "version": "1.0.0",
+  "certified": true,
+  "certified_at": "2026-11-07T01:52:01+00:00",
+  "checks": {
+    "docs_count_100": true,
+    "chunks_gt_6000": true,
+    "duplicates_zero": true,
+    "md_files_complete": true,
+    "sanity_hit_ge_95": true,
+    "topic_hit_ge_75": true,
+    "health_ok": true,
+    "tests_present": true,
+    "incremental_present": true,
+    "recovery_present": true
+  },
+  "summary": {
+    "version": "1.0",
+    "docs": 100,
+    "chunks": 6127,
+    "tipos": {
+      "auto": 2,
+      "sentencia": 98
+    },
+    "salas": {
+      "civil": 10,
+      "tutela": 51,
+      "laboral": 38,
+      "especial": 1
+    },
+    "years": {
+      "2024": 98,
+      "2026": 2
+    },
+    "raw_bytes": 77510869,
+    "md_files": 101,
+    "embeddings": {
+      "provider": "nvidia",
+      "model": "nvidia/nemotron-3-embed-1b",
+      "dim": 2048
+    },
+    "benchmark": {
+      "sanity_hit@5": 0.99,
+      "sanity_mrr": 0.9758333333333333,
+      "topic_hit@5": 0.7922077922077922,
+      "topic_mrr": 0.6257575757575757
+    }
+  },
+  "benchmark": {
+    "sanity_hit_at_5": 0.99,
+    "sanity_mrr": 0.9758333333333333,
+    "topic_hit_at_5": 0.7922077922077922,
+    "topic_mrr": 0.6257575757575757
+  }
+}

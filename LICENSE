@@ -1,0 +1,47 @@
+# Licencias del Corpus CSJ v1.1.0
+
+Cada componente se rige por su propia licencia.
+
+## Código fuente — MIT
+
+Copyright (c) 2026 Contribuidores del Corpus CSJ
+
+Se concede permiso, libre de cargo, a cualquier persona que obtenga una
+copia de este software y archivos de documentación asociados, para usar
+el Software sin restricción, incluyendo usar, copiar, modificar, fusionar,
+publicar, distribuir, sublicenciar y/o vender copias, sujeto a que el
+aviso de copyright anterior y este aviso se incluyan en todas las copias
+o partes sustanciales del Software.
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO.
+
+Aplica a: todos los archivos .py, tests/*.py, run_api.sh,
+requirements.txt, pyproject.toml, pytest.ini.
+
+## Datos derivados — CC BY 4.0
+
+Los datos producidos por el pipeline (md/, chunks/, chunks.jsonl,
+embeddings/, manifest.jsonl, stats.json, schema.json) se distribuyen
+bajo Creative Commons Attribution 4.0 International.
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+## Documentos fuente — sin licencia declarada
+
+Los archivos en `raw/` son providencias judiciales descargadas del
+portal público de la CSJ (consultajurisprudencial.ramajudicial.gov.co).
+Este repositorio los redistribuye con fines de investigación, docencia
+y preservación, con atribución a su fuente, y NO reclama derechos de
+autor sobre ellos ni otorga licencias sobre ellos.
+
+Quien reutilice los RAW debe verificar los términos del portal oficial
+de la CSJ y la normativa colombiana aplicable.
+
+## Marcas y datos personales
+
+"Corte Suprema de Justicia" es marca de sus titulares. Los RAW pueden
+contener datos personales de las partes; su tratamiento debe sujetarse
+a la Ley 1581 de 2012.
+
+## Contacto
+
+Correcciones o retiro de contenido: abrir un issue.

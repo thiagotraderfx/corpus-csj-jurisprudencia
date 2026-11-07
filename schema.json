@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "description": "Schema del corpus CSJ para RAG/LLM",
+  "manifest.jsonl": {
+    "fields": {
+      "id": "string",
+      "row_key": "string",
+      "providencia": "string",
+      "radicado": "string",
+      "sala": "string",
+      "ponente": "string",
+      "fecha": "string",
+      "tipo": "string",
+      "clase": "string",
+      "tema": "string",
+      "fuente_formal": "string",
+      "ext": "string",
+      "raw_path": "string",
+      "md_path": "string",
+      "url_original": "string",
+      "sha256": "string",
+      "size": "int",
+      "md_sha256": "string",
+      "metadata_sources": "array",
+      "acquired_at": "string"
+    }
+  },
+  "chunks.jsonl": {
+    "fields": {
+      "chunk_id": "string",
+      "doc_id": "string",
+      "providencia": "string",
+      "radicado": "string",
+      "sala": "string",
+      "fecha": "string",
+      "ponente": "string",
+      "tipo": "string",
+      "section": "string",
+      "text": "string",
+      "char_start": "int",
+      "char_end": "int",
+      "md_url": "string",
+      "raw_url": "string",
+      "source_url": "string"
+    }
+  }
+}

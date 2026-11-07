@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Corpus CSJ — Corte Suprema de Justicia de Colombia"
+message: "Si usa este corpus en investigación, cítelo con este formato."
+type: dataset
+authors:
+  - name: "Contribuidores del Corpus CSJ"
+version: "1.1.0"
+date-released: 2026-11-07
+license: "MIT"
+keywords:
+  - jurisprudencia
+  - Corte Suprema de Justicia
+  - Colombia
+  - ETL
+  - RAG
+  - derecho
+  - legal NLP

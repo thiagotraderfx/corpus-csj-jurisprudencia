@@ -1,0 +1,114 @@
+# Corpus CSJ — Corte Suprema de Justicia de Colombia
+
+ETL reproducible de jurisprudencia de la Corte Suprema de Justicia de
+Colombia, con API REST y RAG listo para consulta.
+
+## Estado (v1.1.0 — CERTIFIED 13/13)
+
+| Componente | Valor |
+| --- | --- |
+| Documentos RAW | 202 archivos (201 docs únicos, 986442 tiene docx+pdf) |
+| Markdown | 201 |
+| Chunks | 10 991 |
+| Embeddings | NVIDIA `nemotron-3-embed-1b` (2048d) |
+| Sanity hit@5 | 99.5% (retrieval por contenido) |
+| Topic hit@5 | ~53% (limitado por metadata del portal — ver `DATA_QUALITY.md`) |
+| API REST | 13 endpoints |
+| Tests | 14/14 |
+| Certificación | 13/13 → `v1.1.0-certified.json` |
+
+Distribución por año: 2022 (50), 2023 (25), 2024 (98), 2025 (26), 2026 (2).
+
+## Inicio rápido
+
+```bash
+git clone https://github.com/USUARIO/corpus-csj-jurisprudencia.git
+cd corpus-csj-jurisprudencia
+
+# Assets (raw + embeddings) — descargar del release
+gh release download v1.1.0 --pattern 'corpus_csj_*_v1.1.0.tar.gz'
+sha256sum -c SHA256SUMS
+tar xzf corpus_csj_raw_v1.1.0.tar.gz
+tar xzf corpus_csj_embeddings_v1.1.0.tar.gz
+
+# Configurar key
+cat > ~/.csj_keys <<'KEYS'
+export NVIDIA_API_KEY="nvapi-TU_KEY"
+KEYS
+chmod 600 ~/.csj_keys
+source ~/.csj_keys
+
+pip install -r requirements.txt
+
+python3 health_check.py
+python3 certify_v1_1.py
+
+python3 rag_query.py "responsabilidad civil contractual"
+python3 rag_ask.py "¿Cuál es el precedente sobre responsabilidad civil contractual?"
+./run_api.sh    # http://localhost:8000/docs
+```
+
+## API (13 endpoints)
+
+Swagger en `/docs`. Ejemplos:
+
+```bash
+curl -s -X POST http://localhost:8000/search \
+  -H "Content-Type: application/json" \
+  -d '{"query":"responsabilidad civil","k":5,"year":2024}' | python3 -m json.tool
+
+curl -s -X POST http://localhost:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"query":"¿Cuál es el precedente sobre responsabilidad civil contractual?"}'
+```
+
+## Limitaciones documentadas
+
+- **Cobertura parcial**: 202 docs del universo estimado de ~32 899.
+- **Topic retrieval limitado**: el portal CSJ publica el mismo `tema` para docenas de docs distintos. Sanity (retrieval por contenido) es 99.5%. Ver `DATA_QUALITY.md`.
+- **Metadata parcial**: 110 docs sin `fuente_formal`, 8 sin `sala` (derivada en M004), 1 sin `tema` (AC6987-2026).
+- **Sin evaluación de respuestas LLM**: medimos retrieval, no alucinación.
+
+## Estructura
+
+```
+.
+├── api*.py                     FastAPI (endpoints, índice, RAG)
+├── m062_crawler_byid.py        Crawler resumible
+├── m063_rebuild_chunks_only.py Re-chunk sin re-embed
+├── re_embed_nvidia.py          Re-embed NVIDIA con checkpoint
+├── rag_query.py, rag_ask.py    CLI retrieval / RAG
+├── embedding_client.py         Cliente unificado
+├── benchmark_v2.py             Sanity + topic retrieval
+├── certify_v1_1.py             Certificación 13 checks
+├── tests/                      pytest (14 tests)
+├── md/YYYY/*.md                201 markdowns
+├── chunks/YYYY/*.jsonl         Chunks por año
+├── chunks.jsonl                10 991 chunks
+├── manifest.jsonl              Provenance SHA-256
+├── DATA_QUALITY.md             Gaps y limitaciones documentados
+└── v1.1.0-certified.json       Certificado machine-readable
+```
+
+**Release assets** (no en git): `corpus_csj_raw_v1.1.0.tar.gz`,
+`corpus_csj_embeddings_v1.1.0.tar.gz`, `corpus_csj_v1.1.0_FULL.tar.gz`,
+`SHA256SUMS`.
+
+## Reproducibilidad
+
+```bash
+python3 m062_crawler_byid.py --type sentencia --year 2024 --max-docs 100
+python3 m063_rebuild_chunks_only.py
+python3 re_embed_nvidia.py
+python3 certify_v1_1.py
+```
+
+## Licencia
+
+Ver [LICENSE](LICENSE). Código MIT, datos derivados CC BY 4.0, RAW sin
+licencia declarada (atribución a la CSJ).
+
+## Descargo
+
+Herramienta de investigación. No sustituye la consulta de las providencias
+en el portal oficial de la CSJ.

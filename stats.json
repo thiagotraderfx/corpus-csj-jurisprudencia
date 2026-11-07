@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-06T21:42:22+00:00",
+  "corpus": "Corte Suprema de Justicia — Colombia",
+  "raw": {
+    "total_records": 3,
+    "by_ext": {
+      "docx": 2,
+      "pdf": 1
+    },
+    "total_bytes": 4068603
+  },
+  "md": {
+    "total_files": 3
+  },
+  "chunks": {
+    "total": 31,
+    "by_section": {
+      "INTRO": 3,
+      "**ANTECEDENTES**": 4,
+      "**CONSIDERACIONES**": 18,
+      "DECISIÓN": 1,
+      "**RESUELVE**": 2,
+      "Anexos del documento": 2,
+      "**DECISIÓN**": 1
+    },
+    "chars_total": 22852,
+    "chars_avg": 737
+  }
+}

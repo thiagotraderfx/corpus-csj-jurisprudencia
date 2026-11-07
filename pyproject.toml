@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corpus-corte-suprema"
+version = "0.1.0"
+description = "Adquisicion y conservacion de jurisprudencia de la Corte Suprema de Justicia de Colombia"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
