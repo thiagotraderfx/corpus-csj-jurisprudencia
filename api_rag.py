@@ -177,3 +177,114 @@ def generate(query: str, sources: list, model: Optional[str],
             continue
 
     raise RAGError(f"Ningún modelo chat respondió. Último: {last_error}")
+
+
+
+
+
+
+# ═══════════════════════════════════════════════════════════════
+# WRAPPER ANTI-ALUCINACIÓN (Fase A.2) — v2
+# No modifica generate() ni retrieve(). Solo envuelve su salida.
+# retrieve() → (list[dict], meta) — parseamos ambos.
+# generate(query, sources, model=None) — api_key se lee del env.
+# ═══════════════════════════════════════════════════════════════
+
+
+# ═══════════════════════════════════════════════════════════════
+# WRAPPER ANTI-ALUCINACIÓN (Fase A.2) — v3
+# Adapta args de generate() con inspect.signature, normaliza
+# retorno tuple/dict/str. No modifica generate() ni retrieve().
+# ═══════════════════════════════════════════════════════════════
+
+
+# ═══════════════════════════════════════════════════════════════
+# WRAPPER ANTI-ALUCINACIÓN — v4
+# Usa AskRequest defaults exactamente como api.py.
+# ═══════════════════════════════════════════════════════════════
+
+def _unpack_retrieve(raw):
+    """retrieve() → (list[dict], meta). Devuelve list[dict] normalizada."""
+    if isinstance(raw, tuple) and len(raw) == 2:
+        chunks = raw[0]
+    elif isinstance(raw, list):
+        chunks = raw
+    else:
+        chunks = []
+    if not isinstance(chunks, list):
+        chunks = list(chunks)
+    out = []
+    for c in chunks:
+        d = dict(c) if isinstance(c, dict) else {"text": str(c), "score": 0.0}
+        for f in ("chunk_id", "providencia", "section", "fecha", "sala", "text"):
+            d.setdefault(f, "")
+        d.setdefault("score", 0.0)
+        try:
+            d["score"] = float(d["score"])
+        except (TypeError, ValueError):
+            d["score"] = 0.0
+        out.append(d)
+    return out
+
+
+def _normalize_generate_out(out):
+    if isinstance(out, tuple):
+        out = out[0] if out else ""
+    if isinstance(out, dict):
+        out = out.get("answer", out.get("text", str(out)))
+    return str(out) if out is not None else ""
+
+
+def _get_chat_defaults():
+    """Lee defaults del modelo AskRequest (Pydantic), igual que api.py."""
+    try:
+        from api_models import AskRequest
+        r = AskRequest(query="x")
+        return r.model, r.temperature, r.max_tokens
+    except Exception:
+        return "auto", 0.2, 1024
+
+
+def generate_safe(query, index, k=5, model=None, refusal_threshold=0.30):
+    """Versión blindada de generate() con defaults de AskRequest."""
+    from rag_safe import safe_answer, should_refuse
+
+    raw = retrieve(index, query, k=k)
+    sources = _unpack_retrieve(raw)
+
+    if not sources:
+        return {
+            "answer": "No tengo información suficiente en el corpus.",
+            "sources": [], "refused": True, "verified": None,
+            "confidence": 0.0, "citations": [], "unverified": [],
+            "reason": "no_retrieval_results",
+        }
+
+    scores = [s["score"] for s in sources]
+
+    if should_refuse(scores, refusal_threshold):
+        return {
+            "answer": ("No tengo información suficiente en el corpus para responder "
+                       "con certeza. Reformula la pregunta o consulta las providencias "
+                       "en el portal oficial de la CSJ."),
+            "sources": sources, "refused": True, "verified": None,
+            "confidence": max(scores), "citations": [], "unverified": [],
+            "reason": "retrieval_weak: max=%.3f < %.2f" % (max(scores), refusal_threshold),
+        }
+
+    default_model, default_temp, default_max = _get_chat_defaults()
+
+    def _llm_call(q, _ctx):
+        mdl = model if model is not None else default_model
+        out = generate(q, sources, mdl, default_temp, default_max)
+        return _normalize_generate_out(out)
+
+    result = safe_answer(
+        question=query,
+        context_chunks=sources,
+        scores=scores,
+        llm_call=_llm_call,
+        refusal_threshold=refusal_threshold,
+    )
+    result["sources"] = sources
+    return result

@@ -329,3 +329,89 @@ if __name__ == "__main__":
     print(f"  http://{host}:{port}/")
     print(f"  Docs: http://{host}:{port}/docs")
     uvicorn.run("api:app", host=host, port=port, reload=False)
+
+
+# ═══════════════════════════════════════════════════════════════
+# ENDPOINT /ask/safe — blindado anti-alucinación (Fase A.3-bis)
+# No modifica /ask. Endpoint independiente. Cero regresión.
+# ═══════════════════════════════════════════════════════════════
+@app.post("/ask/safe", response_model=AskResponse, tags=["rag"],
+          summary="RAG blindado anti-alucinación (refusal + verificación de citas)")
+def ask_safe(req: AskRequest):
+    """
+    /ask con blindaje:
+    - Refusal si retrieval débil (max score < 0.30)
+    - Verificación de citas [N] y de providencias
+    - Campos extra: verified/refused/confidence/citations/unverified/reason
+    """
+    from rag_safe import should_refuse, safe_answer
+    from api_rag import _unpack_retrieve, _get_chat_defaults, _normalize_generate_out
+
+    t0 = time.time()
+    idx = get_index()
+    raw_results = retrieve(idx, req.query, req.k)
+
+    sources_list = _unpack_retrieve(raw_results)
+    raw_sources = raw_results[0] if isinstance(raw_results, tuple) else raw_results
+    scores = [s.get("score", 0.0) for s in sources_list]
+
+    if not sources_list:
+        elapsed = int((time.time() - t0) * 1000)
+        return AskResponse(
+            query=req.query,
+            answer="No tengo información suficiente en el corpus para responder con certeza.",
+            sources=raw_sources, model_used="n/a", provider="n/a",
+            latency_ms=elapsed, tokens_used=0,
+            verified=None, refused=True, confidence=0.0,
+            citations=[], unverified=[], reason="no_retrieval_results",
+        )
+
+    if should_refuse(scores, 0.30):
+        elapsed = int((time.time() - t0) * 1000)
+        return AskResponse(
+            query=req.query,
+            answer=("No tengo información suficiente en el corpus para responder "
+                    "con certeza. Reformula la pregunta o consulta las providencias "
+                    "en el portal oficial de la CSJ."),
+            sources=raw_sources, model_used="n/a", provider="n/a",
+            latency_ms=elapsed, tokens_used=0,
+            verified=None, refused=True, confidence=float(max(scores)),
+            citations=[], unverified=[],
+            reason="retrieval_weak: max=%.3f < 0.30" % max(scores),
+        )
+
+    dm, _dt, _dmax = _get_chat_defaults()
+    mdl = req.model if req.model is not None else dm
+    meta = {"model": mdl, "provider": "nvidia", "tokens": 0}
+
+    def _llm_call(q, _ctx):
+        out = generate(q, raw_sources, mdl, req.temperature, req.max_tokens)
+        if isinstance(out, tuple) and len(out) >= 4:
+            meta["model"] = out[1]
+            meta["provider"] = out[2]
+            meta["tokens"] = out[3] or 0
+            return str(out[0])
+        return _normalize_generate_out(out)
+
+    result = safe_answer(
+        question=req.query,
+        context_chunks=sources_list,
+        scores=scores,
+        llm_call=_llm_call,
+        refusal_threshold=0.30,
+    )
+
+    elapsed = int((time.time() - t0) * 1000)
+    return AskResponse(
+        query=req.query,
+        answer=result.get("answer", ""),
+        sources=raw_sources,
+        model_used=meta["model"], provider=meta["provider"],
+        latency_ms=elapsed, tokens_used=meta["tokens"],
+        verified=result.get("verified"),
+        refused=result.get("refused"),
+        confidence=result.get("confidence"),
+        citations=result.get("citations"),
+        unverified=result.get("unverified"),
+        reason=result.get("reason"),
+    )

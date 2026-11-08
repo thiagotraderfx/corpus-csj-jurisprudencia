@@ -71,6 +71,14 @@ class AskResponse(BaseModel):
     provider: str
     latency_ms: int
     tokens_used: Optional[int] = None
+    # Fase A.3-bis: campos de seguridad (opcionales)
+    verified: Optional[bool] = None
+    refused: Optional[bool] = None
+    confidence: Optional[float] = None
+    citations: Optional[list] = None
+    unverified: Optional[list] = None
+    reason: Optional[str] = None
+
 
 
 class DocumentResponse(BaseModel):
