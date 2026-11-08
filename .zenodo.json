@@ -1,11 +1,13 @@
 {
   "title": "Corpus CSJ — Corte Suprema de Justicia de Colombia",
-  "description": "ETL reproducible de jurisprudencia de la Corte Suprema de Justicia de Colombia. 202 archivos RAW (201 docs únicos), 10 991 chunks, embeddings NVIDIA nemotron-3-embed-1b (2048d), API REST (13 endpoints) y RAG listo para consulta. Sanity hit@5: 99.5%.",
+  "description": "ETL reproducible de jurisprudencia de la Corte Suprema de Justicia de Colombia. 309 sentencias (civil 128, laboral 117, penal 64), 23339 chunks, embeddings NVIDIA nemotron-3-embed-1b (2048d), API REST (13 endpoints) y RAG listo para consulta. Sanity hit@5: 99.5%.",
   "upload_type": "dataset",
   "license": "MIT",
   "access_right": "open",
   "creators": [
-    {"name": "Contribuidores del Corpus CSJ"}
+    {
+      "name": "Contribuidores del Corpus CSJ"
+    }
   ],
   "keywords": [
     "jurisprudencia",
@@ -22,5 +24,6 @@
       "relation": "isSupplementTo",
       "scheme": "url"
     }
-  ]
+  ],
+  "version": "1.1.5"
 }

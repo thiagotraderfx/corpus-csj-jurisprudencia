@@ -14,13 +14,13 @@ Colombia, con API REST y RAG listo para consulta.
 
 > **Aviso legal.** Este repositorio redistribuye providencias públicas descargadas del portal `consultajurisprudencial.ramajudicial.gov.co`. No reclama derechos sobre los documentos originales (ver [LICENSE](LICENSE)). Si usted es titular de derechos y desea el retiro de algún contenido, abra un issue y se atenderá a la brevedad.
 
-## Estado (v1.1.4 — CERTIFIED 13/13)
+## Estado (v1.1.5 — CERTIFIED 13/13)
 
 | Componente | Valor |
 | --- | --- |
-| Documentos RAW | 201 archivos |
+| Documentos RAW | 309 archivos |
 | Markdown | 201 |
-| Chunks | 10,991 |
+| Chunks | 23,339 |
 | Embeddings | NVIDIA `nemotron-3-embed-1b` (2048d) |
 | **Sanity hit@5** | **99.50%** (n=201) |
 | Sanity precision@5 | 57.71% |
@@ -30,7 +30,7 @@ Colombia, con API REST y RAG listo para consulta.
 | Topic MRR | 0.616 |
 | API REST | 13 endpoints |
 | Tests | 14/14 local · 4+10 skip en CI |
-| Certificación | 13/13 → `v1.1.0-certified.json` |
+| Certificación | 13/13 → `v1.1.5-certified.json` |
 
 Distribución por año: 2022 (50), 2023 (25), 2024 (97), 2025 (27), 2026 (3).
 
@@ -41,10 +41,10 @@ git clone https://github.com/thiagotraderfx/corpus-csj-jurisprudencia.git
 cd corpus-csj-jurisprudencia
 
 # Assets (raw + embeddings) — descargar del release
-gh release download v1.1.0 --pattern 'corpus_csj_*_v1.1.0.tar.gz'
+gh release download v1.1.5 --pattern 'corpus_csj_*_v1.1.5.tar.gz'
 sha256sum -c SHA256SUMS
-tar xzf corpus_csj_raw_v1.1.0.tar.gz
-tar xzf corpus_csj_embeddings_v1.1.0.tar.gz
+tar xzf corpus_csj_raw_v1.1.5.tar.gz
+tar xzf corpus_csj_embeddings_v1.1.5.tar.gz
 
 # Configurar key
 cat > ~/.csj_keys <<'KEYS'
@@ -108,11 +108,11 @@ curl -s -X POST http://localhost:8000/ask \
 ├── chunks.jsonl                10 991 chunks
 ├── manifest.jsonl              Provenance SHA-256
 ├── DATA_QUALITY.md             Gaps y limitaciones documentados
-└── v1.1.0-certified.json       Certificado machine-readable
+└── v1.1.5-certified.json       Certificado machine-readable
 ```
 
-**Release assets** (no en git): `corpus_csj_raw_v1.1.0.tar.gz`,
-`corpus_csj_embeddings_v1.1.0.tar.gz`, `corpus_csj_v1.1.0_FULL.tar.gz`,
+**Release assets** (no en git): `corpus_csj_raw_v1.1.5.tar.gz`,
+`corpus_csj_embeddings_v1.1.5.tar.gz`, `corpus_csj_v1.1.5_FULL.tar.gz`,
 `SHA256SUMS`.
 
 ## Reproducibilidad
