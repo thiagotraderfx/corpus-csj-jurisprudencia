@@ -1,0 +1,7 @@
+{
+  "answer_accuracy": 0.26,
+  "citation_accuracy": 0.12,
+  "faithfulness": 0.02,
+  "refusal_accuracy": 1.0,
+  "false_refusal_rate": 0.08
+}
