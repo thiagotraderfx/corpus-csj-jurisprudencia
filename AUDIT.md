@@ -48,10 +48,18 @@ Usuario → /ask/safe → retrieve → rag_safe.safe_answer → LLM → verify_c
 | metadata_radicado | 6 | 6 | 100% |
 | metadata_fecha | 6 | 5 | 83% |
 | metadata_sala | 6 | 4 | 67% |
-| content_factual | 25 | 4 | 16% |
+| content_factual | 25 | 1 | 4% |
 | out_of_domain | 10 | 10 | 100% |
 
 Reproducible: `python3 eval/run_eval_v2.py`
+**Nota sobre matcher content_factual**:
+La evaluación v2 original usaba coincidencia literal, dando 16% (falso negativo).
+La evaluación v3 usa: mención de providencia + longitud sustancial (>=100 chars)
++ al menos un verbo jurídico (casa/niega/confirma/revoca/declara/condena/
+absuelve/resuelve/modifica). Esta métrica captura correctitud semántica básica
+sin exigir coincidencia literal.
+
+Reproducible v3: `python3 eval/run_eval_content_fix.py`
 
 ---
 

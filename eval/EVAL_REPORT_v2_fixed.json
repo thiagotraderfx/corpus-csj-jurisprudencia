@@ -1,0 +1,195 @@
+{
+  "generated_at": "2026-11-08T14:20:33",
+  "metric_version": "v2_metadata + v3_content",
+  "n_questions": 60,
+  "n_in_domain": 50,
+  "n_out_of_domain": 10,
+  "metrics": {
+    "faithfulness": 0.46,
+    "refusal_accuracy": 1.0,
+    "false_refusal_rate": 0.0
+  },
+  "by_category": {
+    "metadata_ponente": {
+      "n": 7,
+      "ok": 7,
+      "refused": 0
+    },
+    "metadata_fecha": {
+      "n": 6,
+      "ok": 5,
+      "refused": 0
+    },
+    "metadata_sala": {
+      "n": 6,
+      "ok": 4,
+      "refused": 0
+    },
+    "metadata_radicado": {
+      "n": 6,
+      "ok": 6,
+      "refused": 0
+    },
+    "out_of_domain": {
+      "n": 10,
+      "ok": 10,
+      "refused": 10
+    },
+    "content_factual": {
+      "n": 25,
+      "ok": 1,
+      "refused": 0
+    }
+  },
+  "content_factual_results": [
+    {
+      "id": "q026",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q027",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q028",
+      "correct": true,
+      "reason": "verbo: modifica",
+      "answer": "La Corte, en la providencia STC17811‑2024, decide rechazar la solicitud de sentencia anticipada, señalando que la existencia de un contrato de transacción sobre la cuota alimentaria no impide su poste"
+    },
+    {
+      "id": "q029",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q030",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte decide que la medida de aseguramiento procede con doble conformidad y que la impugnación especial procede cuando la primera condena se emite en casación [1]."
+    },
+    {
+      "id": "q031",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q032",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte declara la inadmisibilidad del recurso de casación interpuesto por DISTRITEK S.A.S., al considerar que el agravio no constituye un desacierto fáctico evidente y trascendente y, por tanto, res"
+    },
+    {
+      "id": "q033",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q034",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte declara la improcedencia de la acción de tutela, al no acreditarse el perjuicio irremediable y al constatar que el vínculo laboral entre el accionante y la sociedad demandada terminó por la f"
+    },
+    {
+      "id": "q035",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte Suprema de Justicia, Sala de Casación Laboral, **no casó** la sentencia proferida por la Sala Tercera de Decisión Laboral del Tribunal Superior del Distrito Judicial de Bucaramanga (20 feb 20"
+    },
+    {
+      "id": "q036",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q037",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q038",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte Suprema de Justicia, Sala de Casación Laboral, **no casó** la sentencia dictada el 3 de septiembre de 2019 por la Sala Quinta de Decisión Civil‑Familia‑Laboral del Tribunal Superior del Distr"
+    },
+    {
+      "id": "q039",
+      "correct": false,
+      "error": "Ningún modelo chat respondió. Último: nv-mistralai/mistral-nemo-12b-instruct: HTTP 404"
+    },
+    {
+      "id": "q040",
+      "correct": false,
+      "reason": "sin verbo jurídico",
+      "answer": "No tengo evidencia suficiente en el corpus para determinar qué decide la Corte en la providencia SC3280-2024."
+    },
+    {
+      "id": "q041",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q042",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q043",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte revoca la sentencia de primera instancia, declara ineficaz una de las exclusiones pactadas en el contrato de seguro y condena a la demandada al pago de la indemnización que se impuso en la ga"
+    },
+    {
+      "id": "q044",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "La Corte decide \"IFÍQUESE Y CÚMPLASE\" en la providencia SC3085‑2024. [2]"
+    },
+    {
+      "id": "q045",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte decide declarar la existencia de la sociedad patrimonial de hecho y, en consecuencia, ordenar su liquidación y la partición de los bienes entre los compañeros, conforme a la normativa civil y"
+    },
+    {
+      "id": "q046",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte declara que no existe vulneración del derecho al debido proceso respecto de la decisión de la Superintendencia de Sociedades que removió del cargo de interventor al accionante, y por tanto ma"
+    },
+    {
+      "id": "q047",
+      "correct": false,
+      "error": "Ningún modelo chat respondió. Último: nv-mistralai/mistral-nemo-12b-instruct: HTTP 404"
+    },
+    {
+      "id": "q048",
+      "correct": false,
+      "reason": "no menciona providencia",
+      "answer": "La Corte decide que procede la medida de aseguramiento bajo el principio de doble conformidad y que la impugnación especial es admisible cuando la primera condena se emite en casación. [1]"
+    },
+    {
+      "id": "q049",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    },
+    {
+      "id": "q050",
+      "correct": false,
+      "reason": "answer < 100 chars",
+      "answer": "No tengo evidencia suficiente en el corpus."
+    }
+  ],
+  "declaracion": "Matcher v3 para content_factual: mención de providencia + respuesta >= 100 chars + al menos 1 verbo jurídico. Captura correctitud semántica básica sin exigir coincidencia literal. Metadata y OOD conservan evaluación v2."
+}

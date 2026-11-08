@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-08T13:12:43",
-  "metric_version": "v2-keyword+boosted",
+  "generated_at": "2026-11-08T14:20:33",
+  "metric_version": "v2_metadata + v3_content",
   "n_questions": 60,
   "n_in_domain": 50,
   "n_out_of_domain": 10,
-  "faithfulness": 0.52,
+  "faithfulness": 0.46,
   "refusal_accuracy": 1.0,
   "false_refusal_rate": 0.0,
   "by_category": {
@@ -28,15 +28,15 @@
       "ok": 6,
       "refused": 0
     },
-    "content_factual": {
-      "n": 25,
-      "ok": 4,
-      "refused": 0
-    },
     "out_of_domain": {
       "n": 10,
       "ok": 10,
       "refused": 10
+    },
+    "content_factual": {
+      "n": 25,
+      "ok": 1,
+      "refused": 0
     }
   },
   "corpus": {
@@ -46,5 +46,5 @@
     "certification": "13/13"
   },
   "version": "v1.1.5",
-  "c3_regression_preserved_at": "eval/failed_attempts/C3_v3_42pct.json"
+  "metric_v3_content": "mención prov + >=100 chars + 1 verbo jurídico"
 }
