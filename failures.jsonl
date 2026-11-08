@@ -1,0 +1,4 @@
+{"id": "984967", "providencia": "SL1281-2026", "error": "URLError: <urlopen error [Errno 104] Connection reset by peer>", "timestamp": "2026-11-08T02:16:39+00:00"}
+{"id": "983874", "providencia": "SL1248-2026", "error": "URLError: <urlopen error [Errno 104] Connection reset by peer>", "timestamp": "2026-11-08T02:18:00+00:00"}
+{"id": "984971", "providencia": "SL1303-2026", "error": "URLError: <urlopen error _ssl.c:1064: The handshake operation timed out>", "timestamp": "2026-11-08T02:19:53+00:00"}
+{"id": "962015", "providencia": "SP311-2026", "error": "URLError: <urlopen error _ssl.c:1064: The handshake operation timed out>", "timestamp": "2026-11-08T03:05:07+00:00"}

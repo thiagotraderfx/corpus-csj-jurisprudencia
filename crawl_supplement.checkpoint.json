@@ -1,0 +1,86 @@
+{
+  "started_at": "2026-11-08T03:03:43.966203+00:00",
+  "temas": {
+    "penal_extorsion": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "penal_trafico_estupefacientes": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "penal_secuestro": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "penal_lavado_activos": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "penal_concierto_delinquir": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "penal_porte_armas": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "penal_violencia_intrafamiliar": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "civil_arrendamiento": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "civil_servidumbres": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "civil_nulidad": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "civil_hipoteca": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "civil_proceso_ejecutivo": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "civil_titulos_valores": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "civil_promesa_compraventa": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "laboral_horas_extras": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "laboral_indemnizacion": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "laboral_pension": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "laboral_accidente_trabajo": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "laboral_salarios_caidos": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "laboral_fuero_sindical": {
+      "downloaded": 0,
+      "status": "rc_1"
+    }
+  },
+  "updated_at": "2026-11-08T03:37:35.412564+00:00"
+}

@@ -1,0 +1,126 @@
+{
+  "started_at": "2026-11-08T01:19:55.995865+00:00",
+  "temas": {
+    "casacion_penal": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "sistema_penal_acusatorio": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "prueba_penal": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "debido_proceso_penal": {
+      "downloaded": 0,
+      "status": "rc_1"
+    },
+    "delitos_contra_la_vida_y_la_integridad": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "delitos_sexuales_y_violencia_de_genero": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "delitos_contra_el_patrimonio_economico": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "delitos_contra_la_administracion_publica": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "autoria_participacion_y_concurso": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "dosificacion_punitiva_y_subrogados": {
+      "downloaded": 2,
+      "status": "ok"
+    },
+    "responsabilidad_civil_extracontractual": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "responsabilidad_civil_contractual": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "contratos_civiles_y_comerciales": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "propiedad_posesion_y_prescripcion": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "derecho_de_familia_y_relaciones_familiares": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "derecho_de_sucesiones": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "contrato_de_seguro": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "responsabilidad_medica": {
+      "downloaded": 0,
+      "status": "ok"
+    },
+    "derecho_agrario_y_rural": {
+      "downloaded": 2,
+      "status": "ok"
+    },
+    "derecho_del_consumo_y_competencia": {
+      "downloaded": 0,
+      "status": "rc_1"
+    },
+    "contrato_de_trabajo_y_contrato_realidad": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "despido_y_terminacion_del_contrato": {
+      "downloaded": 4,
+      "status": "ok"
+    },
+    "estabilidad_laboral_reforzada": {
+      "downloaded": 2,
+      "status": "ok"
+    },
+    "pension_de_vejez": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "pension_de_invalidez_y_sobrevivientes": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "salarios_prestaciones_y_liquidacion": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "riesgos_laborales_y_accidentes_de_trabajo": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "convenciones_colectivas_y_fuero_sindical": {
+      "downloaded": 3,
+      "status": "ok"
+    },
+    "sustitucion_patronal_y_tercerizacion": {
+      "downloaded": 2,
+      "status": "ok"
+    },
+    "casacion_laboral_y_proceso": {
+      "downloaded": 2,
+      "status": "ok"
+    }
+  },
+  "updated_at": "2026-11-08T02:25:45.410180+00:00"
+}

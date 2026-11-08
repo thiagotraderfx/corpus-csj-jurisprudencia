@@ -1,0 +1,127 @@
+{
+  "corpus": "Corte Suprema de Justicia de Colombia",
+  "version_taxonomia": "3.0-supplement",
+  "objetivo": "Completar corpus a 300 docs (faltan 16, margen 4)",
+  "temas": [
+    {
+      "sala": "penal",
+      "tema": "penal_extorsion",
+      "cuota": 1,
+      "consulta": "extorsion"
+    },
+    {
+      "sala": "penal",
+      "tema": "penal_trafico_estupefacientes",
+      "cuota": 1,
+      "consulta": "trafico de estupefacientes"
+    },
+    {
+      "sala": "penal",
+      "tema": "penal_secuestro",
+      "cuota": 1,
+      "consulta": "secuestro"
+    },
+    {
+      "sala": "penal",
+      "tema": "penal_lavado_activos",
+      "cuota": 1,
+      "consulta": "lavado de activos"
+    },
+    {
+      "sala": "penal",
+      "tema": "penal_concierto_delinquir",
+      "cuota": 1,
+      "consulta": "concierto para delinquir"
+    },
+    {
+      "sala": "penal",
+      "tema": "penal_porte_armas",
+      "cuota": 1,
+      "consulta": "porte ilegal de armas"
+    },
+    {
+      "sala": "penal",
+      "tema": "penal_violencia_intrafamiliar",
+      "cuota": 1,
+      "consulta": "violencia intrafamiliar"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_arrendamiento",
+      "cuota": 1,
+      "consulta": "arrendamiento"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_servidumbres",
+      "cuota": 1,
+      "consulta": "servidumbres"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_nulidad",
+      "cuota": 1,
+      "consulta": "nulidad"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_hipoteca",
+      "cuota": 1,
+      "consulta": "hipoteca"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_proceso_ejecutivo",
+      "cuota": 1,
+      "consulta": "proceso ejecutivo"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_titulos_valores",
+      "cuota": 1,
+      "consulta": "titulos valores"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "civil_promesa_compraventa",
+      "cuota": 1,
+      "consulta": "promesa de compraventa"
+    },
+    {
+      "sala": "laboral",
+      "tema": "laboral_horas_extras",
+      "cuota": 1,
+      "consulta": "horas extras"
+    },
+    {
+      "sala": "laboral",
+      "tema": "laboral_indemnizacion",
+      "cuota": 1,
+      "consulta": "indemnizacion"
+    },
+    {
+      "sala": "laboral",
+      "tema": "laboral_pension",
+      "cuota": 1,
+      "consulta": "pension"
+    },
+    {
+      "sala": "laboral",
+      "tema": "laboral_accidente_trabajo",
+      "cuota": 1,
+      "consulta": "accidente laboral"
+    },
+    {
+      "sala": "laboral",
+      "tema": "laboral_salarios_caidos",
+      "cuota": 1,
+      "consulta": "salarios caidos"
+    },
+    {
+      "sala": "laboral",
+      "tema": "laboral_fuero_sindical",
+      "cuota": 1,
+      "consulta": "fuero sindical"
+    }
+  ]
+}

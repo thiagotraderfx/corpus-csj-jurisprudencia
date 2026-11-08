@@ -1,0 +1,96 @@
+{
+  "corpus": "Corte Suprema de Justicia de Colombia",
+  "version_taxonomia": "4.0-fill",
+  "temas": [
+    {
+      "sala": "penal",
+      "tema": "fill_homicidio_agravado",
+      "cuota": 1,
+      "consulta": "homicidio agravado"
+    },
+    {
+      "sala": "penal",
+      "tema": "fill_estafa",
+      "cuota": 1,
+      "consulta": "estafa"
+    },
+    {
+      "sala": "penal",
+      "tema": "fill_falsedad",
+      "cuota": 1,
+      "consulta": "falsedad"
+    },
+    {
+      "sala": "penal",
+      "tema": "fill_amenazas",
+      "cuota": 1,
+      "consulta": "amenazas"
+    },
+    {
+      "sala": "penal",
+      "tema": "fill_peculado",
+      "cuota": 1,
+      "consulta": "peculado"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "fill_resp_civil",
+      "cuota": 1,
+      "consulta": "responsabilidad civil"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "fill_divorcio",
+      "cuota": 1,
+      "consulta": "divorcio"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "fill_custodia",
+      "cuota": 1,
+      "consulta": "custodia"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "fill_contrato",
+      "cuota": 1,
+      "consulta": "contrato"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "fill_casacion_civil",
+      "cuota": 1,
+      "consulta": "casacion civil"
+    },
+    {
+      "sala": "laboral",
+      "tema": "fill_despido",
+      "cuota": 1,
+      "consulta": "despido"
+    },
+    {
+      "sala": "laboral",
+      "tema": "fill_seguridad_social",
+      "cuota": 1,
+      "consulta": "seguridad social"
+    },
+    {
+      "sala": "laboral",
+      "tema": "fill_contrato_trabajo",
+      "cuota": 1,
+      "consulta": "contrato de trabajo"
+    },
+    {
+      "sala": "laboral",
+      "tema": "fill_casacion_laboral",
+      "cuota": 1,
+      "consulta": "casacion laboral"
+    },
+    {
+      "sala": "laboral",
+      "tema": "fill_salario",
+      "cuota": 1,
+      "consulta": "salario"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "corpus": "Corte Suprema de Justicia de Colombia",
+  "version_taxonomia": "2.0",
+  "objetivo": "Muestra temática inicial de 100 providencias",
+  "distribucion": {
+    "penal": 34,
+    "civil_agraria_rural": 33,
+    "laboral": 33,
+    "total": 100
+  },
+  "temas": [
+    {
+      "sala": "penal",
+      "tema": "casacion_penal",
+      "cuota": 4,
+      "consulta": "casacion penal"
+    },
+    {
+      "sala": "penal",
+      "tema": "sistema_penal_acusatorio",
+      "cuota": 4,
+      "consulta": "sistema penal acusatorio"
+    },
+    {
+      "sala": "penal",
+      "tema": "prueba_penal",
+      "cuota": 4,
+      "consulta": "prueba testimonial"
+    },
+    {
+      "sala": "penal",
+      "tema": "debido_proceso_penal",
+      "cuota": 4,
+      "consulta": "derecho de defensa"
+    },
+    {
+      "sala": "penal",
+      "tema": "delitos_contra_la_vida_y_la_integridad",
+      "cuota": 4,
+      "consulta": "homicidio"
+    },
+    {
+      "sala": "penal",
+      "tema": "delitos_sexuales_y_violencia_de_genero",
+      "cuota": 3,
+      "consulta": "acceso carnal violento"
+    },
+    {
+      "sala": "penal",
+      "tema": "delitos_contra_el_patrimonio_economico",
+      "cuota": 3,
+      "consulta": "hurto"
+    },
+    {
+      "sala": "penal",
+      "tema": "delitos_contra_la_administracion_publica",
+      "cuota": 3,
+      "consulta": "peculado"
+    },
+    {
+      "sala": "penal",
+      "tema": "autoria_participacion_y_concurso",
+      "cuota": 3,
+      "consulta": "autoria"
+    },
+    {
+      "sala": "penal",
+      "tema": "dosificacion_punitiva_y_subrogados",
+      "cuota": 2,
+      "consulta": "dosificacion penal"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "responsabilidad_civil_extracontractual",
+      "cuota": 4,
+      "consulta": "responsabilidad civil extracontractual"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "responsabilidad_civil_contractual",
+      "cuota": 4,
+      "consulta": "responsabilidad civil contractual"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "contratos_civiles_y_comerciales",
+      "cuota": 4,
+      "consulta": "contrato de compraventa"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "propiedad_posesion_y_prescripcion",
+      "cuota": 4,
+      "consulta": "accion reivindicatoria"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "derecho_de_familia_y_relaciones_familiares",
+      "cuota": 4,
+      "consulta": "filiacion"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "derecho_de_sucesiones",
+      "cuota": 3,
+      "consulta": "sucesion intestada"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "contrato_de_seguro",
+      "cuota": 3,
+      "consulta": "contrato de seguro"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "responsabilidad_medica",
+      "cuota": 3,
+      "consulta": "responsabilidad medica"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "derecho_agrario_y_rural",
+      "cuota": 2,
+      "consulta": "propiedad rural"
+    },
+    {
+      "sala": "civil_agraria_rural",
+      "tema": "derecho_del_consumo_y_competencia",
+      "cuota": 2,
+      "consulta": "proteccion al consumidor"
+    },
+    {
+      "sala": "laboral",
+      "tema": "contrato_de_trabajo_y_contrato_realidad",
+      "cuota": 4,
+      "consulta": "contrato de trabajo"
+    },
+    {
+      "sala": "laboral",
+      "tema": "despido_y_terminacion_del_contrato",
+      "cuota": 4,
+      "consulta": "despido sin justa causa"
+    },
+    {
+      "sala": "laboral",
+      "tema": "estabilidad_laboral_reforzada",
+      "cuota": 4,
+      "consulta": "estabilidad laboral reforzada"
+    },
+    {
+      "sala": "laboral",
+      "tema": "pension_de_vejez",
+      "cuota": 4,
+      "consulta": "pension de vejez"
+    },
+    {
+      "sala": "laboral",
+      "tema": "pension_de_invalidez_y_sobrevivientes",
+      "cuota": 4,
+      "consulta": "pension de invalidez"
+    },
+    {
+      "sala": "laboral",
+      "tema": "salarios_prestaciones_y_liquidacion",
+      "cuota": 3,
+      "consulta": "salarios prestaciones"
+    },
+    {
+      "sala": "laboral",
+      "tema": "riesgos_laborales_y_accidentes_de_trabajo",
+      "cuota": 3,
+      "consulta": "accidente de trabajo"
+    },
+    {
+      "sala": "laboral",
+      "tema": "convenciones_colectivas_y_fuero_sindical",
+      "cuota": 3,
+      "consulta": "convencion colectiva"
+    },
+    {
+      "sala": "laboral",
+      "tema": "sustitucion_patronal_y_tercerizacion",
+      "cuota": 2,
+      "consulta": "sustitucion patronal"
+    },
+    {
+      "sala": "laboral",
+      "tema": "casacion_laboral_y_proceso",
+      "cuota": 2,
+      "consulta": "casacion laboral"
+    }
+  ]
+}

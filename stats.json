@@ -1,49 +1,52 @@
 {
-  "generated_at": "2026-11-08T00:41:19.681841+00:00",
+  "generated_at": "2026-11-08T16:04:46.173738+00:00",
   "corpus": "Corte Suprema de Justicia — Colombia",
-  "version": "v1.1.5",
+  "version": "1.1.5",
   "raw": {
-    "total_records": 207,
+    "total_records": 309,
     "by_ext": {
-      "docx": 206,
-      "pdf": 1
+      "docx": 309
     },
-    "total_bytes": 165583864
+    "total_bytes": 338237979
   },
   "md": {
-    "total_files": 206
+    "total_files": 315
   },
   "chunks": {
-    "total": 11731,
+    "total": 23339,
     "by_section": {
-      "CONSIDERACIONES": 5148,
-      "ANTECEDENTES": 3188,
-      "INTRO": 2101,
-      "Anexos del documento": 421,
-      "DECISIÓN": 294,
-      "*CONSIDERACIONES*": 188,
-      "RESUELVE": 175,
-      "RESUELVE:": 89,
+      "CONSIDERACIONES": 9112,
+      "INTRO": 6956,
+      "ANTECEDENTES": 4591,
+      "Anexos del documento": 995,
+      "RESUELVE": 459,
+      "DECISIÓN": 340,
+      "CONSIDERACIONES DE LA CORTE": 291,
+      "*CONSIDERACIONES*": 242,
+      "RESUELVE:": 194,
       "CONSIDERACIONES DE LA CORTE:": 61,
+      "Consideraciones": 47,
       "*Resuelve:*": 30,
-      "CONSIDERACIONES DE LA CORTE": 25,
       "Problema jurídico": 9,
-      "*RESUELVE*": 2
+      "consideraciones": 7,
+      "*RESUELVE*": 4,
+      "*RESUELVE:*": 1
     },
-    "chars_total": 11015150,
-    "chars_avg": 938
+    "chars_total": 22133735,
+    "chars_avg": 948
   },
   "by_year": {
-    "2022": 51,
+    "2021": 1,
+    "2022": 54,
     "2023": 26,
-    "2024": 100,
-    "2025": 27,
-    "2026": 3
+    "2024": 99,
+    "2025": 39,
+    "2026": 90
   },
   "by_sala": {
-    "SALA DE CASACIÓN CIVIL": 36,
+    "SALA DE CASACIÓN CIVIL": 33,
     "SALA DE CASACIÓN CIVIL Y AGRARIA": 22,
-    "SALA DE CASACIÓN CIVIL, AGRARIA Y RURAL": 46,
+    "SALA DE CASACIÓN CIVIL, AGRARIA Y RURAL": 45,
     "SALA DE CASACIÓN LABORAL": 32,
     "SALA DE CASACIÓN PENAL": 1,
     "SALA DE CASACIÓN PENAL - SALA DE DECISIÓN DE TUTELAS": 16,
@@ -51,15 +54,14 @@
     "SALA DE DESCONGESTIÓN LABORAL N.º 2": 10,
     "SALA DE DESCONGESTIÓN LABORAL N.º 3": 11,
     "SALA DE DESCONGESTIÓN LABORAL N.º 4": 13,
-    "SALA ESPECIAL DE PRIMERA INSTANCIA": 1,
-    "penal": 5
+    "civil": 28,
+    "laboral": 37,
+    "penal": 47
   },
   "by_tipo": {
-    "AUTO": 4,
-    "AUTO INTERLOCUTORIO": 1,
-    "SENTENCIA": 190,
+    "SENTENCIA": 295,
     "SENTENCIA COMPLEMENTARIA": 1,
     "SENTENCIA DE INSTANCIA": 7,
-    "SENTENCIA SUSTITUTIVA": 4
+    "SENTENCIA SUSTITUTIVA": 6
   }
 }

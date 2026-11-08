@@ -1,34 +1,8 @@
 {
-  "version": "1.0",
-  "docs": 101,
-  "chunks": 6158,
-  "tipos": {
-    "auto": 2,
-    "sentencia": 99
-  },
-  "salas": {
-    "civil": 11,
-    "tutela": 51,
-    "laboral": 38,
-    "especial": 1
-  },
-  "years": {
-    "2024": 98,
-    "2025": 1,
-    "2026": 2
-  },
-  "raw_bytes": 79429477,
-  "md_files": 102,
-  "duplicates_sha256": 0,
-  "embeddings": {
-    "provider": "nvidia",
-    "model": "nvidia/nemotron-3-embed-1b",
-    "dim": 2048
-  },
-  "benchmark": {
-    "sanity_hit@5": 0.9900990099009901,
-    "sanity_mrr": 0.976072607260726,
-    "topic_hit@5": 0.7948717948717948,
-    "topic_mrr": 0.6305555555555555
-  }
+  "generated_at": "2026-11-08T16:04:47.632851+00:00",
+  "version": "1.1.5",
+  "docs": 309,
+  "chunks": 23339,
+  "md_files": 315,
+  "duplicates_sha256": 0
 }

@@ -35,7 +35,7 @@ from api_models import (
 )
 from api_rag import RAGError, generate, retrieve
 
-APP_VERSION = "1.1.0"
+APP_VERSION = __import__("json").load(open("stats.json")).get("version", "1.1.5")
 START_TS = time.time()
 
 logging.basicConfig(

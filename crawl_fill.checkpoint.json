@@ -1,0 +1,66 @@
+{
+  "started_at": "2026-11-08T03:46:52.972182+00:00",
+  "temas": {
+    "fill_homicidio_agravado": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_estafa": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_falsedad": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_amenazas": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_peculado": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_resp_civil": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_divorcio": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_custodia": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_contrato": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_casacion_civil": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_despido": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_seguridad_social": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_contrato_trabajo": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_casacion_laboral": {
+      "downloaded": 1,
+      "status": "ok"
+    },
+    "fill_salario": {
+      "downloaded": 0,
+      "status": "rc_1"
+    }
+  },
+  "updated_at": "2026-11-08T04:07:48.784364+00:00"
+}

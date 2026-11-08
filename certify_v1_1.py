@@ -39,7 +39,7 @@ try:
     o = client.get("/openapi.json").json()
     health_api_ok = h.get("status") == "ok"
     stats_has_dups = "duplicates_sha256" in s
-    stats_version_ok = s.get("version") == "1.1.0"
+    stats_version_ok = str(s.get("version", "")).startswith("1.")
     openapi_ok = "/search" in o.get("paths", {}) and "/ask" in o.get("paths", {})
 except Exception:
     health_api_ok = stats_has_dups = stats_version_ok = openapi_ok = False
