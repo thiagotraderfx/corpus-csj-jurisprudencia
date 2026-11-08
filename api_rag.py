@@ -288,3 +288,53 @@ def generate_safe(query, index, k=5, model=None, refusal_threshold=0.30):
     )
     result["sources"] = sources
     return result
+
+
+# ═══════════════════════════════════════════════════════════════
+# retrieve_boosted — si la query menciona una providencia, prioriza
+# los chunks INTRO de esa providencia (donde vive la metadata).
+# ═══════════════════════════════════════════════════════════════
+def retrieve_boosted(index, query, k=5):
+    """Retrieve con boost cuando la query menciona una providencia específica."""
+    import re
+    raw = retrieve(index, query, k=k)
+    chunks = _unpack_retrieve(raw)
+
+    # Detectar si la query menciona una providencia
+    prov_match = re.search(r'\b([A-Z]{2,4}\d{1,6}-\d{4})\b', query)
+    if not prov_match:
+        return raw
+
+    target = prov_match.group(1)
+
+    # Buscar chunks de esa providencia directamente en el índice
+    try:
+        all_chunks = index.chunks if hasattr(index, "chunks") else []
+    except Exception:
+        all_chunks = []
+
+    if not all_chunks:
+        return raw
+
+    target_chunks = [
+        c for c in all_chunks
+        if c.get("providencia") == target
+    ]
+
+    if not target_chunks:
+        return raw
+
+    # Priorizar INTRO (metadata) y luego el resto de esa providencia
+    intro = [c for c in target_chunks if c.get("section") == "INTRO"]
+    otros = [c for c in target_chunks if c.get("section") != "INTRO"]
+
+    boosted = intro + otros[:3]  # hasta 3 chunks de la providencia
+    for c in boosted:
+        c.setdefault("score", 0.6)  # score alto artificial
+
+    # Deduplicar contra top-5 inicial por chunk_id
+    seen = {c.get("chunk_id") for c in boosted}
+    extra = [c for c in chunks if c.get("chunk_id") not in seen]
+
+    final = boosted + extra[:max(0, k - len(boosted))]
+    return (final, None)  # formato compatible con retrieve

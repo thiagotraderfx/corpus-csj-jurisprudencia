@@ -1,0 +1,564 @@
+{
+  "generated_at": "2026-11-08T13:12:43",
+  "metric_version": "v2-keyword+boosted",
+  "n_questions": 60,
+  "n_in_domain": 50,
+  "n_out_of_domain": 10,
+  "metrics": {
+    "faithfulness": 0.52,
+    "refusal_accuracy": 1.0,
+    "false_refusal_rate": 0.0
+  },
+  "by_category": {
+    "metadata_ponente": {
+      "n": 7,
+      "ok": 7,
+      "refused": 0
+    },
+    "metadata_fecha": {
+      "n": 6,
+      "ok": 5,
+      "refused": 0
+    },
+    "metadata_sala": {
+      "n": 6,
+      "ok": 4,
+      "refused": 0
+    },
+    "metadata_radicado": {
+      "n": 6,
+      "ok": 6,
+      "refused": 0
+    },
+    "content_factual": {
+      "n": 25,
+      "ok": 4,
+      "refused": 0
+    },
+    "out_of_domain": {
+      "n": 10,
+      "ok": 10,
+      "refused": 10
+    }
+  },
+  "results": [
+    {
+      "id": "q001",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia SC926-2026?",
+      "answer": "MARTHA PATRICIA GUZMÁN ÁLVAREZ [2]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 2892
+    },
+    {
+      "id": "q002",
+      "category": "metadata_fecha",
+      "query": "¿Cuál es la fecha de la providencia SC1983-2025?",
+      "answer": "No tengo evidencia suficiente en el corpus para determinar la fecha de la providencia SC1983-2025.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 2678
+    },
+    {
+      "id": "q003",
+      "category": "metadata_sala",
+      "query": "¿A qué sala pertenece la providencia SL4216-2022?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 62639
+    },
+    {
+      "id": "q004",
+      "category": "metadata_radicado",
+      "query": "¿Cuál es el número de radicado de la providencia SL3460-2024?",
+      "answer": "101599 [2]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 5429
+    },
+    {
+      "id": "q005",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia SL3426-2024?",
+      "answer": "El ponente de la providencia SL3426‑2024 fue el Magistrado **Martín Emilio Beltrán Quintero** [3].",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 9776
+    },
+    {
+      "id": "q006",
+      "category": "metadata_fecha",
+      "query": "¿Cuál es la fecha de la providencia SL1248-2026?",
+      "answer": "La fecha de la providencia SL1248-2026 es el 16 de septiembre de 2026 [2].",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 62970
+    },
+    {
+      "id": "q007",
+      "category": "metadata_sala",
+      "query": "¿A qué sala pertenece la providencia SC503-2023?",
+      "answer": "La providencia SC503‑2023 pertenece a la **SALA DE CASACIÓN CIVIL** [2].",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 6216
+    },
+    {
+      "id": "q008",
+      "category": "metadata_radicado",
+      "query": "¿Cuál es el número de radicado de la providencia STL17410-2024?",
+      "answer": "El número de radicado de la providencia STL17410-2024 es **110069**[2].",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 3686
+    },
+    {
+      "id": "q009",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia SC437-2023?",
+      "answer": "FRANCISCO TERNERA BARRIOS [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 3225
+    },
+    {
+      "id": "q010",
+      "category": "metadata_fecha",
+      "query": "¿Cuál es la fecha de la providencia STP18227-2024?",
+      "answer": "La fecha de la providencia STP18227-2024 es el 16 de diciembre de 2024. [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 2996
+    },
+    {
+      "id": "q011",
+      "category": "metadata_sala",
+      "query": "¿A qué sala pertenece la providencia STC16434-2022?",
+      "answer": "La providencia STC16434‑2022 pertenece a la Sala de Casación Civil y Agraria. [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 4925
+    },
+    {
+      "id": "q012",
+      "category": "metadata_radicado",
+      "query": "¿Cuál es el número de radicado de la providencia SC2109-2025?",
+      "answer": "11001-02-03-000-2022-02302-00 [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 2603
+    },
+    {
+      "id": "q013",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia SC2068-2025?",
+      "answer": "Martha Patricia Guzmán Álvarez [3]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 6466
+    },
+    {
+      "id": "q014",
+      "category": "metadata_fecha",
+      "query": "¿Cuál es la fecha de la providencia SC4669-2021?",
+      "answer": "11 de noviembre de 2021 [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 3227
+    },
+    {
+      "id": "q015",
+      "category": "metadata_sala",
+      "query": "¿A qué sala pertenece la providencia SL3402-2024?",
+      "answer": "La providencia SL3402-2024 pertenece a la Sala de Descongestión Laboral N.º 3. [2]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 64891
+    },
+    {
+      "id": "q016",
+      "category": "metadata_radicado",
+      "query": "¿Cuál es el número de radicado de la providencia SL3437-2024?",
+      "answer": "97948 [3]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 3969
+    },
+    {
+      "id": "q017",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia STC21308-2025?",
+      "answer": "Fernando Augusto Jiménez Valderrama [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 3646
+    },
+    {
+      "id": "q018",
+      "category": "metadata_fecha",
+      "query": "¿Cuál es la fecha de la providencia STP21582-2025?",
+      "answer": "16 de diciembre de 2024 [4]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 70179
+    },
+    {
+      "id": "q019",
+      "category": "metadata_sala",
+      "query": "¿A qué sala pertenece la providencia SC2003-2025?",
+      "answer": "La providencia SC2003-2025 pertenece a la Sala Civil. [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 5636
+    },
+    {
+      "id": "q020",
+      "category": "metadata_radicado",
+      "query": "¿Cuál es el número de radicado de la providencia STL17896-2024?",
+      "answer": "T 77878 [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 2657
+    },
+    {
+      "id": "q021",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia SL3335-2024?",
+      "answer": "GUEZ JIMÉNEZ [3]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 2333
+    },
+    {
+      "id": "q022",
+      "category": "metadata_fecha",
+      "query": "¿Cuál es la fecha de la providencia STC16361-2022?",
+      "answer": "La fecha de la providencia STC16361-2022 es el 07/12/2022 [1].",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 3786
+    },
+    {
+      "id": "q023",
+      "category": "metadata_sala",
+      "query": "¿A qué sala pertenece la providencia SL3405-2024?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 2435
+    },
+    {
+      "id": "q024",
+      "category": "metadata_radicado",
+      "query": "¿Cuál es el número de radicado de la providencia STC16699-2024?",
+      "answer": "11001-02-03-000-2024-04998-00 [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 66171
+    },
+    {
+      "id": "q025",
+      "category": "metadata_ponente",
+      "query": "¿Quién fue el ponente de la providencia STP18224-2024?",
+      "answer": "Fernando León Bolaños Palacios [1]",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 4009
+    },
+    {
+      "id": "q026",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SL1305-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus para determinar la decisión concreta que la Corte adopta en la providencia SL1305-2026.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 4168
+    },
+    {
+      "id": "q027",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC1169-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 63084
+    },
+    {
+      "id": "q028",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia STC17811-2024?",
+      "answer": "La Corte decide que la decisión que niega la solicitud de sentencia anticipada es razonable, al considerar que la existencia de un contrato de transacción sobre la cuota alimentaria no impide su posterior revisión y eventual modificación cuando las circunstancias particulares lo ameriten; asimismo, ",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 6170
+    },
+    {
+      "id": "q029",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC148-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 2741
+    },
+    {
+      "id": "q030",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SP194-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 2407
+    },
+    {
+      "id": "q031",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SL3297-2024?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 8185
+    },
+    {
+      "id": "q032",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC958-2026?",
+      "answer": "La Corte desestima el recurso de casación interpuesto por DISTRITEK S.A.S., al considerar que la alegada discrepancia con el juicio probatorio no es suficiente para desvirtuar la presunción de acierto y legalidad que ampara la sentencia, por lo que se mantiene la decisión de la sentencia recurrida. ",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 9363
+    },
+    {
+      "id": "q033",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SP1206-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 14166
+    },
+    {
+      "id": "q034",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia STP18341-2024?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 7764
+    },
+    {
+      "id": "q035",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SL3335-2024?",
+      "answer": "La Corte Suprema de Justicia, Sala de Casación Laboral, **no casó** la sentencia proferida por la Sala Tercera de Decisión Laboral del Tribunal Superior del Distrito Judicial de Bucaramanga (20 feb 2024) en el proceso laboral de Álvaro Santamaría Sánchez contra la Cooperativa Santandereana de Transp",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 8232
+    },
+    {
+      "id": "q036",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia STC21336-2025?",
+      "answer": "La Corte decide **rechazar la acción de tutela** interpuesta por Rosa Omaira Salcedo Álvarez, al considerar que la tutela no constituye una tercera instancia y al constatar la indebida formulación de los medios impugnativos, lo que genera la **denegación de la prejudicialidad** y la **exclusión de l",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 19025
+    },
+    {
+      "id": "q037",
+      "category": "content_factual",
+      "error": "Ningún modelo chat respondió. Último: nv-mistralai/mistral-nemo-12b-instruct: HTTP 404",
+      "correct": false,
+      "refused": null,
+      "elapsed_ms": 15666
+    },
+    {
+      "id": "q038",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SL4258-2022?",
+      "answer": "La Corte Suprema de Justicia, Sala de Casación Laboral, en la providencia SL4258‑2022 decidió **NO CASAR** la sentencia dictada el 3 de septiembre de 2019 por la Sala Quinta de Decisión Civil‑Familia‑Laboral del Tribunal Superior del Distrito Judicial de Neiva, y ordenó **notifíquese, publíquese, cú",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 8314
+    },
+    {
+      "id": "q039",
+      "category": "content_factual",
+      "error": "Ningún modelo chat respondió. Último: nv-mistralai/mistral-nemo-12b-instruct: HTTP 404",
+      "correct": false,
+      "refused": null,
+      "elapsed_ms": 27021
+    },
+    {
+      "id": "q040",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC3280-2024?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 3185
+    },
+    {
+      "id": "q041",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC1169-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 3939
+    },
+    {
+      "id": "q042",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC148-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 2955
+    },
+    {
+      "id": "q043",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia STC16442-2022?",
+      "answer": "La Corte decide revocar la sentencia de primera instancia, declarar la ineficacia de una de las exclusiones pactadas en el contrato de seguro y condenar a la demandada al pago de la indemnización que se impuso a la llamada en garantía. [3]",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 12408
+    },
+    {
+      "id": "q044",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC3085-2024?",
+      "answer": "La Corte decide \"IFÍQUESE Y CÚMPLASE\" [2].",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 4011
+    },
+    {
+      "id": "q045",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC3085-2024?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 5396
+    },
+    {
+      "id": "q046",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia STC21315-2025?",
+      "answer": "La Corte declara que no existe vulneración del derecho al debido proceso y, por tanto, mantiene la decisión de la Superintendencia de Sociedades – Dirección de Intervención Judicial que removió del cargo de interventor al accionante, al constatar la suscripción del contrato de transacción para la re",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 7751
+    },
+    {
+      "id": "q047",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SP1929-2025?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 13436
+    },
+    {
+      "id": "q048",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SP194-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 14828
+    },
+    {
+      "id": "q049",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC148-2026?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": true,
+      "elapsed_ms": 5930
+    },
+    {
+      "id": "q050",
+      "category": "content_factual",
+      "query": "¿Qué decide la Corte en la providencia SC2157-2025?",
+      "answer": "No tengo evidencia suficiente en el corpus.",
+      "refused": false,
+      "correct": false,
+      "elapsed_ms": 3737
+    },
+    {
+      "id": "q051",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 533
+    },
+    {
+      "id": "q052",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 504
+    },
+    {
+      "id": "q053",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 509
+    },
+    {
+      "id": "q054",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 563
+    },
+    {
+      "id": "q055",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 523
+    },
+    {
+      "id": "q056",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 539
+    },
+    {
+      "id": "q057",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 456
+    },
+    {
+      "id": "q058",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 455
+    },
+    {
+      "id": "q059",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 449
+    },
+    {
+      "id": "q060",
+      "category": "out_of_domain",
+      "refused": true,
+      "correct": true,
+      "elapsed_ms": 427
+    }
+  ]
+}
