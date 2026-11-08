@@ -2,8 +2,6 @@
   "provider": "nvidia",
   "model": "nvidia/nemotron-3-embed-1b",
   "dim": 2048,
-  "n_passages": 10991,
-  "generated_at": "2026-11-07T05:53:48Z",
-  "frontmatter_filtered_at": "2026-11-07T01:20:23.205270",
-  "frontmatter_removed": 210
+  "n_passages": 11731,
+  "generated_at": "2026-11-08T00:28:48Z"
 }

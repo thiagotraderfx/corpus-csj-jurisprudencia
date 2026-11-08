@@ -1,41 +1,42 @@
 {
-  "generated_at": "2026-11-07T21:07:40.756266+00:00",
+  "generated_at": "2026-11-08T00:41:19.681841+00:00",
   "corpus": "Corte Suprema de Justicia — Colombia",
-  "version": "v1.1.4",
+  "version": "v1.1.5",
   "raw": {
-    "total_records": 202,
+    "total_records": 207,
     "by_ext": {
-      "docx": 201,
+      "docx": 206,
       "pdf": 1
     },
-    "total_bytes": 163196753
+    "total_bytes": 165583864
   },
   "md": {
-    "total_files": 201
+    "total_files": 206
   },
   "chunks": {
-    "total": 10991,
+    "total": 11731,
     "by_section": {
-      "CONSIDERACIONES": 4968,
-      "ANTECEDENTES": 3160,
-      "INTRO": 1654,
-      "Anexos del documento": 404,
+      "CONSIDERACIONES": 5148,
+      "ANTECEDENTES": 3188,
+      "INTRO": 2101,
+      "Anexos del documento": 421,
       "DECISIÓN": 294,
       "*CONSIDERACIONES*": 188,
-      "RESUELVE": 171,
-      "RESUELVE:": 87,
+      "RESUELVE": 175,
+      "RESUELVE:": 89,
+      "CONSIDERACIONES DE LA CORTE:": 61,
       "*Resuelve:*": 30,
       "CONSIDERACIONES DE LA CORTE": 25,
       "Problema jurídico": 9,
-      "*RESUELVE*": 1
+      "*RESUELVE*": 2
     },
-    "chars_total": 10764701,
-    "chars_avg": 979
+    "chars_total": 11015150,
+    "chars_avg": 938
   },
   "by_year": {
-    "2022": 50,
-    "2023": 25,
-    "2024": 97,
+    "2022": 51,
+    "2023": 26,
+    "2024": 100,
     "2025": 27,
     "2026": 3
   },
@@ -50,12 +51,13 @@
     "SALA DE DESCONGESTIÓN LABORAL N.º 2": 10,
     "SALA DE DESCONGESTIÓN LABORAL N.º 3": 11,
     "SALA DE DESCONGESTIÓN LABORAL N.º 4": 13,
-    "SALA ESPECIAL DE PRIMERA INSTANCIA": 1
+    "SALA ESPECIAL DE PRIMERA INSTANCIA": 1,
+    "penal": 5
   },
   "by_tipo": {
     "AUTO": 4,
     "AUTO INTERLOCUTORIO": 1,
-    "SENTENCIA": 185,
+    "SENTENCIA": 190,
     "SENTENCIA COMPLEMENTARIA": 1,
     "SENTENCIA DE INSTANCIA": 7,
     "SENTENCIA SUSTITUTIVA": 4
