@@ -62,3 +62,8 @@ txt/
 /*.docx
 *.har
 
+# Excepciones post-*.log
+!health_final.log
+
+# Residuo auto-generado por certify_v1_1.py (ignorar)
+v1.1.0-certified.json

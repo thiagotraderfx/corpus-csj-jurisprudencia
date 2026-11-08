@@ -1,0 +1,5 @@
+HEALTH: OK
+generated_at: 2026-11-08T00:45:28Z
+check: /health endpoint returned status=ok
+docs: 207
+chunks: 11731
