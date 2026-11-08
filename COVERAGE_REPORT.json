@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-11-08T11:48:31.301898",
+  "total_docs": 309,
+  "total_sentencias": 309,
+  "by_year": {
+    "2026": 90,
+    "2025": 39,
+    "2024": 99,
+    "2023": 26,
+    "2022": 54,
+    "2021": 1
+  },
+  "by_sala": {
+    "civil": 128,
+    "laboral": 117,
+    "penal": 64
+  },
+  "matrix": {
+    "2026_civil": 14,
+    "2026_laboral": 37,
+    "2026_penal": 39,
+    "2025_civil": 35,
+    "2025_laboral": 0,
+    "2025_penal": 4,
+    "2024_civil": 34,
+    "2024_laboral": 52,
+    "2024_penal": 13,
+    "2023_civil": 12,
+    "2023_laboral": 10,
+    "2023_penal": 4,
+    "2022_civil": 32,
+    "2022_laboral": 18,
+    "2022_penal": 4,
+    "2021_civil": 1,
+    "2021_laboral": 0,
+    "2021_penal": 0
+  },
+  "recommendations": [
+    {
+      "tipo": "año_bajo",
+      "target": 2025,
+      "actual": 39,
+      "razon": "Solo 39 sentencias en 2025. Bajo el umbral recomendado (40).",
+      "prioridad": "MEDIA"
+    },
+    {
+      "tipo": "año_bajo",
+      "target": 2023,
+      "actual": 26,
+      "razon": "Solo 26 sentencias en 2023. Bajo el umbral recomendado (40).",
+      "prioridad": "MEDIA"
+    },
+    {
+      "tipo": "año_bajo",
+      "target": 2021,
+      "actual": 1,
+      "razon": "Solo 1 sentencias en 2021. Bajo el umbral recomendado (40).",
+      "prioridad": "ALTA"
+    },
+    {
+      "tipo": "combo_vacio",
+      "target": "2025_laboral",
+      "actual": 0,
+      "razon": "laboral 2025 tiene 0 sentencias. Se recomienda al menos 5 para representatividad.",
+      "prioridad": "MEDIA"
+    },
+    {
+      "tipo": "combo_vacio",
+      "target": "2025_penal",
+      "actual": 4,
+      "razon": "penal 2025 tiene 4 sentencias. Se recomienda al menos 5 para representatividad.",
+      "prioridad": "MEDIA"
+    },
+    {
+      "tipo": "combo_vacio",
+      "target": "2023_penal",
+      "actual": 4,
+      "razon": "penal 2023 tiene 4 sentencias. Se recomienda al menos 5 para representatividad.",
+      "prioridad": "MEDIA"
+    }
+  ]
+}
