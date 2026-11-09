@@ -67,3 +67,7 @@ txt/
 
 # Residuo auto-generado por certify_v1_1.py (ignorar)
 v1.1.0-certified.json
+.backup_orphans/
+.backup_fase_b/
+crawl_plan_*.json
+crawl_gaps*.log
