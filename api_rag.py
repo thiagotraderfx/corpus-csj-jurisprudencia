@@ -14,12 +14,14 @@ from api_index import Index
 NIM_CHAT = "https://integrate.api.nvidia.com/v1/chat/completions"
 NIM_MODELS = "https://integrate.api.nvidia.com/v1/models"
 
+# Lista verificada empíricamente 2026-11-09 contra NVIDIA /chat/completions.
+# Orden: rápido primero, lento al final. Excluido: mistral-large-4 (timeout intermitente).
 CHAT_FALLBACKS = [
     "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
-    "nvidia/nemotron-3-super-120b-a12b",
-    "nvidia/llama-3.1-nemotron-70b-instruct",
-    "mistralai/mistral-large-2-instruct",
-    "nv-mistralai/mistral-nemo-12b-instruct",
+    "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "nvidia/nemotron-3.5-bolt-e4b",
+    "nvidia/nemotron-3-ultra-550b-a55b",
+    "meta/llama-3.2-90b-vision-instruct",
 ]
 
 
@@ -41,9 +43,14 @@ def _available_models(api_key: str) -> list:
             return CHAT_FALLBACKS
         avail = {m.get("id") for m in r.json().get("data", [])}
         filtered = [m for m in CHAT_FALLBACKS if m in avail]
-        return filtered if filtered else CHAT_FALLBACKS
+        # /models de NVIDIA está desactualizado (lista modelos EOL). Si la
+        # intersección vacía, NO usar la lista completa: devolver al menos el
+        # primero (nano, verificado vivo). Nunca devolver candidates sabidos muertos.
+        if filtered:
+            return filtered
+        return CHAT_FALLBACKS[:1]  # nano siempre
     except Exception:
-        return CHAT_FALLBACKS
+        return CHAT_FALLBACKS[:1]  # fallo de red: intentar solo nano
 
 
 def retrieve(index: Index, query: str, k: int = 5,
@@ -150,51 +157,61 @@ def generate(query: str, sources: list, model: Optional[str],
         raise RAGError("No hay fuentes para generar respuesta")
 
     last_error = None
+    # Retry policy: 2 intentos por candidato con backoff 1s/3s. Cubre
+    # 429 (rate limit) y 5xx (transitorio), NO cubre 404/410 (EOL, pasar al siguiente).
     for cand in candidates:
-        try:
-            r = requests.post(
-                NIM_CHAT,
-                headers={"Authorization": f"Bearer {api_key}",
-                         "Content-Type": "application/json"},
-                json={
-                    "model": cand,
-                    "messages": [
-                        {"role": "system", "content": system},
-                        {"role": "user", "content": user},
-                    ],
-                    "temperature": temperature,
-                    "max_tokens": max_tokens,
-                },
-                timeout=90,
-            )
-            if r.status_code in (404, 410):
-                last_error = f"{cand}: HTTP {r.status_code}"
-                continue
-            r.raise_for_status()
+        for attempt in range(2):
+            try:
+                r = requests.post(
+                    NIM_CHAT,
+                    headers={"Authorization": f"Bearer {api_key}",
+                             "Content-Type": "application/json"},
+                    json={
+                        "model": cand,
+                        "messages": [
+                            {"role": "system", "content": system},
+                            {"role": "user", "content": user},
+                        ],
+                        "temperature": temperature,
+                        "max_tokens": max_tokens,
+                    },
+                    timeout=90,
+                )
+                if r.status_code in (404, 410):
+                    last_error = f"{cand}: HTTP {r.status_code} (EOL)"
+                    break  # no reintentar muertos
+                if r.status_code in (429, 500, 502, 503, 504) and attempt == 0:
+                    last_error = f"{cand}: HTTP {r.status_code} (retry)"
+                    time.sleep(2)
+                    continue
+                r.raise_for_status()
 
-            data = r.json()
-            choices = data.get("choices") or []
-            if not choices:
-                last_error = f"{cand}: respuesta sin choices"
-                continue
-            msg = choices[0].get("message") or {}
-            text = msg.get("content")
-            finish = choices[0].get("finish_reason", "?")
+                data = r.json()
+                choices = data.get("choices") or []
+                if not choices:
+                    last_error = f"{cand}: respuesta sin choices"
+                    break
+                msg = choices[0].get("message") or {}
+                text = msg.get("content")
+                finish = choices[0].get("finish_reason", "?")
 
-            if not text or not str(text).strip():
-                last_error = f"{cand}: content vacío (finish_reason={finish})"
-                continue
+                if not text or not str(text).strip():
+                    last_error = f"{cand}: content vacío (finish_reason={finish})"
+                    break
 
-            normalized = normalize_answer(text)
-            if not normalized or not normalized.strip():
-                last_error = f"{cand}: postproceso dejó vacío"
-                continue
+                normalized = normalize_answer(text)
+                if not normalized or not normalized.strip():
+                    last_error = f"{cand}: postproceso dejó vacío"
+                    break
 
-            tokens = (data.get("usage") or {}).get("total_tokens")
-            return normalized, cand, "nvidia", tokens
-        except Exception as exc:
-            last_error = f"{cand}: {type(exc).__name__}: {exc}"
-            continue
+                tokens = (data.get("usage") or {}).get("total_tokens")
+                return normalized, cand, "nvidia", tokens
+            except Exception as exc:
+                last_error = f"{cand}: {type(exc).__name__}: {exc}"
+                if attempt == 0:
+                    time.sleep(1)
+                    continue
+                break
 
     raise RAGError(f"Ningún modelo chat respondió. Último: {last_error}")
 
