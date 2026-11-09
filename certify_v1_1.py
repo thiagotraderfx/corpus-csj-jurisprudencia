@@ -45,6 +45,22 @@ except Exception:
     health_api_ok = stats_has_dups = stats_version_ok = openapi_ok = False
 
 dups = summary.get("duplicates_sha256", -1)
+def _check_ask_safe(client):
+    """P0: /ask/safe debe rechazar queries fuera del corpus sin crashear."""
+    try:
+        r = client.post("/ask/safe", json={"query": "xyzabcquux 987", "k": 1})
+        if r.status_code != 200:
+            return (False, "status=%d" % r.status_code)
+        d = r.json()
+        if not isinstance(d.get("model_used"), str):
+            return (False, "model_used=%r (debe str)" % d.get("model_used"))
+        if d.get("refused") is not True:
+            return (False, "refused=%r (debe True)" % d.get("refused"))
+        return (True, "refused=True, model_used=%s" % d["model_used"][:32])
+    except Exception as e:
+        return (False, "exception: %s" % e)
+
+
 checks = {
     "docs_count_100": summary["docs"] >= 100,
     "chunks_gt_6000": summary["chunks"] > 6000,
@@ -55,6 +71,7 @@ checks = {
     "health_ok": health_ok,
     "tests_pass": tests_pass,
     "api_importable": api_ok,
+    "api_ask_safe_ok": _check_ask_safe(client),
     "api_health_ok": health_api_ok,
     "api_stats_has_duplicates": stats_has_dups,
     "api_stats_version": stats_version_ok,
