@@ -74,3 +74,5 @@ crawl_gaps*.log
 *.py.bak.*
 certify_v1_1.py.bak.*
 *.py.BROKEN.*
+*.sha256.bak.*
+AUDIT.md.bak.*

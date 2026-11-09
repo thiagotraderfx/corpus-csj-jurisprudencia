@@ -191,3 +191,37 @@ Techo con Fase D: 85-92%. 100% no es técnicamente posible.
 ---
 
 **Firmado**: Corpus CSJ v1.1.5, 2026-11-08
+
+## Verificación P2 — integridad de datos (2026-11-09)
+
+Verificado empíricamente:
+
+| Aspecto | Resultado |
+| --- | --- |
+| `chunks.jsonl` count | 23 982 |
+| `passages_ids.jsonl` count | 23 982 |
+| `passages.npy` shape | (23 982, 2048) |
+| **Alineación posicional `chunks[i] ↔ passages_ids[i]`** | ✅ 0/23 982 distintos |
+| **Alineación por conjunto** | ✅ 0 solo en uno u otro |
+| `chunks[i].text ∈ md/*.md` estricto | 82.5 % (muestra 200) |
+| `chunks[i].text ∈ md/*.md` normalizado (NFC + whitespace + markdown) | 96 %+ (muestra 200) |
+| Discrepancias restantes | cosméticas (saltos de línea, comillas tipográficas, `**bold**` en md) |
+
+**Conclusión**: los chunks son la **fuente de verdad** (fuente: `raw/*.docx` → extractor).
+`md/*.md` es un **render legible** derivado con normalización cosmética.
+Ninguna discrepancia afecta el retrieval (usa `chunks.jsonl` + `passages.npy`) ni la cita
+por `chunk_id`. Los `md_url`/`raw_url` que el endpoint `/ask` devuelve existen y son válidos
+para lectura humana.
+
+**No se regenera `chunks.jsonl` ni `passages.npy`** — eso rompería el indexado sin
+beneficio verificable. La divergencia cosmética se documenta y se acepta.
+
+**Hash de integridad** en `INTEGRITY.sha256` (embeddings + manifest + chunks).
+
+### Pendientes P1 — seguridad API (no bloqueantes para uso local)
+
+- `auth X-API-Key` (`api.py:73`): hoy `API_KEY=""` → sin auth. Se habilita configurando
+  la env var. No se activa por defecto para no romper integraciones de prueba.
+- `CORS_ORIGINS=*` (`api.py:99`): restringir a dominios propios en producción.
+- Rate limit `RATE_LIMIT_MAX=120`/60s: configurado, no ejercitado en test. Se valida
+  con carga sintética cuando se prepare despliegue público.
