@@ -268,3 +268,39 @@ Verificación con servidor real (`uvicorn api:app`) y clientes HTTP reales (`cur
 - **Metadata normalización fecha/sala** — filtro opcional
 - **Docker** — no instalado en Termux (Omitido por decisión operativa)
 - **Zenodo v1.1.5** — v1.1.4 sirve para DOI
+
+## Fases 1-3 completadas (2026-11-09)
+
+Commit `140a792` — mejoras verificadas end-to-end sin romper el estado certificado.
+
+### Fase 1 — Normalización de sala
+
+- Bug fix: `retrieve()` usaba substring case-insensitive para filtrar `sala`,
+  causando que "SALA DE CASACIÓN PENAL - SALA DE DECISIÓN DE TUTELAS" se
+  clasificara como Penal (incorrecto) o no matcheara "tutela".
+- Fix: `_norm_sala()` mapea variantes a 4 categorías (Penal/Civil/Laboral/Tutela).
+- Verificado con uvicorn real + curl: 8 casos, 0 incorrectos.
+
+### Fase 2 — Hardening /ask y /ask/stream
+
+- `/ask` ahora reporta `verified: bool` (antes `None`). Verifica citas tras `generate()`.
+- `/ask/stream` incluye `verified` y `unverified` en evento SSE `done`.
+- **NO refusa** si hay citas no verificables. Solo informa. Contrato
+  diferente de `/ask/safe`, que sí refusa.
+
+### Fase 3 — Infraestructura benchmark Fase B
+
+- `benchmark/` con README, template, `run_benchmark.py`, `evaluate.py`.
+- Pendiente: 50 preguntas escritas por abogado + ejecución + LLM-as-judge.
+
+### Snapshot de rollback
+
+Tag `v1.1.6-pre-improvements` en commit `4bd7f63`. Reversión quirúrgica:
+`git revert 140a792` o completa: `git reset --hard v1.1.6-pre-improvements`.
+
+### Fases no ejecutadas (diferidas)
+
+- **Fase 4 (NLI entailment)**: requiere investigación de modelo real (1-2 meses).
+  Un stub con overlap de tokens no detecta alucinaciones semánticas reales.
+- **Fase F (integrar `normas_lex`)**: proyecto separado, ~4-8h, con su propio
+  certify y tag. No mezclar con jurisprudencia — dominios distintos.
