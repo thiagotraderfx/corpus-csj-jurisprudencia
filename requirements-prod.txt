@@ -1,0 +1,2 @@
+slowapi>=0.1.9
+structlog>=24.1.0

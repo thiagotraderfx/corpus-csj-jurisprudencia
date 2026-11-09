@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      - NVIDIA_API_KEY=${NVIDIA_API_KEY}
+    volumes:
+      - ./chunks.jsonl:/app/chunks.jsonl:ro
+      - ./manifest.jsonl:/app/manifest.jsonl:ro
+      - ./embeddings:/app/embeddings:ro
+    restart: unless-stopped

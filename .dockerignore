@@ -1,0 +1,13 @@
+.git/
+raw/
+md/
+dist/
+eval/
+tests/
+legacy/
+__pycache__/
+*.log
+*.tar.gz
+*.npy
+.env*
+.csj_keys

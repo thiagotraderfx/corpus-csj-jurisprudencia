@@ -415,3 +415,12 @@ def ask_safe(req: AskRequest):
         unverified=result.get("unverified"),
         reason=result.get("reason"),
     )
+
+# Fase E: middleware (defensivo)
+try:
+    from middleware import apply_middleware
+    _mw = apply_middleware(app)
+except Exception as _e:
+    import sys as _s
+    print(f"[api] middleware skipped: {_e}", file=_s.stderr)
+    _mw = {"limiter": None}
