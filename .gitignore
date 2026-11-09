@@ -71,3 +71,5 @@ v1.1.0-certified.json
 .backup_fase_b/
 crawl_plan_*.json
 crawl_gaps*.log
+*.py.bak.*
+certify_v1_1.py.bak.*

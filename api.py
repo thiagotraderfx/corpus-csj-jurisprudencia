@@ -382,7 +382,7 @@ def ask_safe(req: AskRequest):
 
     dm, _dt, _dmax = _get_chat_defaults()
     mdl = req.model if req.model is not None else dm
-    meta = {"model": mdl, "provider": "nvidia", "tokens": 0}
+    meta = {"model": "n/a", "provider": "n/a", "tokens": 0}
 
     def _llm_call(q, _ctx):
         out = generate(q, raw_sources, mdl, req.temperature, req.max_tokens)
