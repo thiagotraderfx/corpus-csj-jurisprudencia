@@ -225,3 +225,46 @@ beneficio verificable. La divergencia cosmética se documenta y se acepta.
 - `CORS_ORIGINS=*` (`api.py:99`): restringir a dominios propios en producción.
 - Rate limit `RATE_LIMIT_MAX=120`/60s: configurado, no ejercitado en test. Se valida
   con carga sintética cuando se prepare despliegue público.
+
+## Prueba real end-to-end con uvicorn (2026-11-09)
+
+Verificación con servidor real (`uvicorn api:app`) y clientes HTTP reales (`curl`):
+
+| Bloque | Test | Resultado |
+| --- | --- | --- |
+| A | `sha256sum -c INTEGRITY.sha256` | 3/3 OK |
+| B | uvicorn arranca, /health responde | ✅ |
+| C | 9 endpoints GET (`/`, `/health`, `/stats`, `/providencias`, `/coverage`, `/docs/{id}`, `/chunks/{id}`, `/docs/NOEXISTE`) | 8×200 + 1×404 correcto |
+| D | `POST /search` con query jurídica | 23 982 candidates, 984ms, top-3 con scores reales |
+| E | `POST /ask` con generación LLM | 200, `model_used=nvidia/nemotron-3-nano-omni-30b-a3b-reasoning`, sources válidos |
+| F | `POST /ask/safe` — 3 casos | cubierta: `(False,False,True)` · fuera acervo: `(True,True,None)` · receta: `(True,None,None)`, **sin jerga técnica** |
+| G | `POST /ask/stream` con `curl --no-buffer` | SSE completo: `sources → token×N → [N]` |
+| H | Payloads adversariales (JSON malformado, query vacía, k negativo, 100KB) | 4/4 → 422 |
+| I | CORS + rate limit | localhost ACAO ✓ · evil.com sin header ✓ · rate limit dispara en #31 con max=30 |
+| J | 3 requests paralelos con `curl` | 3×200 en 656ms (paralelismo real, no secuencial) |
+
+**Certify 14/14 CERTIFIED.** Working tree limpio. HEAD `402bfef`.
+
+### Contrato de endpoints
+
+- `/ask` — endpoint raw. Puede devolver 0 citas `[N]`. **No usar para uso jurídico.**
+- `/ask/safe` — endpoint blindado. Verifica citas, expone `verified`/`refused`/`coverage_gap`. **Recomendado para uso jurídico.**
+- `/ask/stream` — SSE. Puede no verificar citas. Igual que `/ask`.
+- Endpoints de lectura (`/providencias`, `/docs`, `/chunks`, `/search`) — rate limited, sin auth. Uso público aceptable.
+- `/health`, `/stats`, `/coverage` — abiertos (info barata). Rate limit no aplica.
+
+### Runtime verificado
+
+- Python 3.14.4 (Termux aarch64)
+- fastapi 0.159.1 · uvicorn 0.54.0 · numpy 2.4.4 · pydantic 2.14.1
+- 5 modelos chat verificados empíricamente (nano, lightning, bolt, ultra, llama-90b-vision)
+- Corrida con `RATE_LIMIT_MAX=30` y `API_KEY` desactivado
+
+### Deudas residuales (fuera de scope P0/P1/P2, documentadas)
+
+- **NLI real (entailment)** — Fase D, investigación 1-2 meses
+- **Benchmark con abogado** — Fase B, requiere humano
+- **Multi-LLM benchmark** — OpenRouter disponible
+- **Metadata normalización fecha/sala** — filtro opcional
+- **Docker** — no instalado en Termux (Omitido por decisión operativa)
+- **Zenodo v1.1.5** — v1.1.4 sirve para DOI
