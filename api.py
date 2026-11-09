@@ -524,13 +524,17 @@ def ask_safe(req: AskRequest):
             "No se encontró jurisprudencia aplicable"):
         _refused = True
         _cov_gap = True
+    # Fix: verified debe ser None si coverage_gap=True (no hay contenido que verificar)
+    _verified = result.get("verified")
+    if _cov_gap:
+        _verified = None
     return AskResponse(
         query=req.query,
         answer=_ans,
         sources=raw_sources,
         model_used=meta["model"], provider=meta["provider"],
         latency_ms=elapsed, tokens_used=meta["tokens"],
-        verified=result.get("verified"),
+        verified=_verified,
         refused=_refused,
         confidence=result.get("confidence"),
         citations=result.get("citations"),
