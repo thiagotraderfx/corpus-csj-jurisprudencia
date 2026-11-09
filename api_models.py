@@ -78,6 +78,7 @@ class AskResponse(BaseModel):
     citations: Optional[list] = None
     unverified: Optional[list] = None
     reason: Optional[str] = None
+    coverage_gap: Optional[bool] = None
 
 
 

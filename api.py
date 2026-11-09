@@ -321,6 +321,108 @@ def get_chunk(chunk_id: str):
 
 
 # ─── Entry point ───
+
+
+# ═══════════════════════════════════════════════════════════════
+# /coverage — reporte determinista de cobertura por sala y año
+# ═══════════════════════════════════════════════════════════════
+def _norm_sala_coverage(s: str) -> str:
+    s = (s or "").upper()
+    if "PENAL" in s and "TUTELA" not in s: return "Penal"
+    if "TUTELA" in s or "DECISIÓN DE TUTELAS" in s: return "Tutela"
+    if "CIVIL" in s: return "Civil"
+    if "LABORAL" in s: return "Laboral"
+    return "Otra"
+
+
+@app.get("/coverage", tags=["info"],
+         summary="Cobertura del acervo por sala y año (determinista)")
+def coverage(
+    sala: Optional[str] = None,
+    year: Optional[int] = None,
+    threshold: int = 5,
+):
+    """
+    Reporte de cobertura del acervo, calculado directamente sobre manifest.
+
+    - Sin filtros: matriz completa sala × año + gaps críticos (< threshold).
+    - `sala` / `year`: filtra la respuesta a esa celda.
+    - `threshold`: umbral bajo el cual una celda se reporta como gap (default 5).
+
+    No usa LLM. Los números son verificables contra manifest.jsonl.
+    """
+    import json as _json
+    matrix = {}
+    total_por_sala = {}
+    total_por_year = {}
+    total = 0
+
+    with open("manifest.jsonl") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            d = _json.loads(line)
+            s = _norm_sala_coverage(d.get("sala"))
+            y_raw = d.get("year") or ((d.get("fecha") or "")[-4:])
+            try:
+                y = int(y_raw) if y_raw else None
+            except ValueError:
+                y = None
+            total += 1
+            total_por_sala[s] = total_por_sala.get(s, 0) + 1
+            if y:
+                total_por_year[y] = total_por_year.get(y, 0) + 1
+                matrix.setdefault(s, {}).setdefault(str(y), 0)
+                matrix[s][str(y)] += 1
+
+    all_years = sorted({str(y) for row in matrix.values() for y in row},
+                       reverse=True)
+
+    # Filtros
+    if sala:
+        sala_norm = _norm_sala_coverage(sala)
+        matrix = {sala_norm: matrix.get(sala_norm, {})}
+        all_years_filtered = all_years
+    else:
+        all_years_filtered = all_years
+
+    if year:
+        y_str = str(year)
+        matrix = {s: {y_str: row.get(y_str, 0)} for s, row in matrix.items()}
+        all_years_filtered = [y_str]
+
+    # Gaps críticos (< threshold)
+    gaps = []
+    for s, row in matrix.items():
+        for y, n in row.items():
+            if n < threshold:
+                gaps.append({"sala": s, "year": y, "docs": n})
+
+    # Recomendaciones (plantilla determinista, sin LLM)
+    recos = []
+    for g in sorted(gaps, key=lambda x: (x["docs"], x["sala"]))[:10]:
+        if g["docs"] == 0:
+            recos.append(
+                f"Ingerir providencias de la sala {g['sala']} del año {g['year']} "
+                f"(sin cobertura actual)."
+            )
+        else:
+            recos.append(
+                f"Ampliar cobertura de la sala {g['sala']} del año {g['year']} "
+                f"({g['docs']} docs actuales, umbral {threshold})."
+            )
+
+    return {
+        "total": total,
+        "por_sala": total_por_sala,
+        "por_year": {str(y): n for y, n in sorted(total_por_year.items(), reverse=True)},
+        "matrix": matrix,
+        "years": all_years_filtered,
+        "threshold": threshold,
+        "gaps_criticos": gaps,
+        "recomendaciones_ingesta": recos,
+    }
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", "8000"))
@@ -414,18 +516,27 @@ def ask_safe(req: AskRequest):
     )
 
     elapsed = int((time.time() - t0) * 1000)
+    _ans = result.get("answer", "")
+    _refused = result.get("refused")
+    _cov_gap = False
+    # Si el LLM decidió no-responder (M2 template), refused=True (contrato honesto)
+    if _refused is False and isinstance(_ans, str) and _ans.strip().startswith(
+            "No se encontró jurisprudencia aplicable"):
+        _refused = True
+        _cov_gap = True
     return AskResponse(
         query=req.query,
-        answer=result.get("answer", ""),
+        answer=_ans,
         sources=raw_sources,
         model_used=meta["model"], provider=meta["provider"],
         latency_ms=elapsed, tokens_used=meta["tokens"],
         verified=result.get("verified"),
-        refused=result.get("refused"),
+        refused=_refused,
         confidence=result.get("confidence"),
         citations=result.get("citations"),
         unverified=result.get("unverified"),
         reason=result.get("reason"),
+        coverage_gap=_cov_gap,
     )
 
 # Fase E: middleware (defensivo)
