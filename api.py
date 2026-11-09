@@ -96,7 +96,16 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
-origins = os.environ.get("CORS_ORIGINS", "*").split(",")
+_cors_env = os.environ.get("CORS_ORIGINS", "").strip()
+if _cors_env:
+    origins = [o.strip() for o in _cors_env.split(",") if o.strip()]
+else:
+    # Default seguro: solo desarrollo local. En producción, exportar
+    # CORS_ORIGINS="https://tudominio.com,https://app.tudominio.com".
+    origins = [
+        "http://localhost:8000", "http://127.0.0.1:8000",
+        "http://localhost:3000", "http://127.0.0.1:3000",
+    ]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -223,7 +232,8 @@ def ask_stream(req: AskRequest):
     return StreamingResponse(gen(), media_type="text/event-stream")
 
 
-@app.get("/providencias", response_model=ListResponse, tags=["docs"])
+@app.get("/providencias", response_model=ListResponse, tags=["docs"],
+         dependencies=[Depends(rate_check)])
 def list_providencias(
     sala: Optional[str] = None,
     tipo: Optional[str] = None,
@@ -275,7 +285,8 @@ def list_providencias(
     return ListResponse(total=total, page=page, limit=limit, results=results)
 
 
-@app.get("/docs/{doc_id}", response_model=DocumentResponse, tags=["docs"])
+@app.get("/docs/{doc_id}", response_model=DocumentResponse, tags=["docs"],
+         dependencies=[Depends(rate_check)])
 def get_doc(doc_id: str, include_content: bool = False):
     idx = get_index()
     rec = idx.find_doc(doc_id)
@@ -308,7 +319,8 @@ def get_doc(doc_id: str, include_content: bool = False):
     )
 
 
-@app.get("/chunks/{chunk_id}", response_model=ChunkResponse, tags=["docs"])
+@app.get("/chunks/{chunk_id}", response_model=ChunkResponse, tags=["docs"],
+         dependencies=[Depends(rate_check)])
 def get_chunk(chunk_id: str):
     idx = get_index()
     c = idx.chunks_by_id.get(chunk_id)
@@ -438,7 +450,8 @@ if __name__ == "__main__":
 # No modifica /ask. Endpoint independiente. Cero regresión.
 # ═══════════════════════════════════════════════════════════════
 @app.post("/ask/safe", response_model=AskResponse, tags=["rag"],
-          summary="RAG blindado anti-alucinación (refusal + verificación de citas)")
+          summary="RAG blindado anti-alucinación (refusal + verificación de citas)",
+          dependencies=[Depends(auth), Depends(rate_check)])
 def ask_safe(req: AskRequest):
     """
     /ask con blindaje:
