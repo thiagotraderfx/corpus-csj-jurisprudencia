@@ -53,6 +53,17 @@ def _available_models(api_key: str) -> list:
         return CHAT_FALLBACKS[:1]  # fallo de red: intentar solo nano
 
 
+
+
+def _norm_sala(s: str) -> str:
+    """Normaliza variantes de sala a 4 categorías base (espejo de /coverage)."""
+    s = (s or "").upper()
+    if "PENAL" in s and "TUTELA" not in s: return "Penal"
+    if "TUTELA" in s or "DECISIÓN DE TUTELAS" in s: return "Tutela"
+    if "CIVIL" in s: return "Civil"
+    if "LABORAL" in s: return "Laboral"
+    return "Otra"
+
 def retrieve(index: Index, query: str, k: int = 5,
              sala: Optional[str] = None,
              tipo: Optional[str] = None,
@@ -74,7 +85,7 @@ def retrieve(index: Index, query: str, k: int = 5,
             if not c:
                 mask[i] = False
                 continue
-            if sala and (c.get("sala") or "").lower().find(sala.lower()) < 0:
+            if sala and _norm_sala(c.get("sala")) != _norm_sala(sala):
                 mask[i] = False
             if tipo and (c.get("tipo") or "").lower() != tipo.lower():
                 mask[i] = False

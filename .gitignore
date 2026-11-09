@@ -76,3 +76,5 @@ certify_v1_1.py.bak.*
 *.py.BROKEN.*
 *.sha256.bak.*
 AUDIT.md.bak.*
+benchmark/data/preguntas.jsonl
+benchmark/results/

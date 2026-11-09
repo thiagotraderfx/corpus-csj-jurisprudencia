@@ -1,0 +1,13 @@
+# PLANTILLA — copiar a preguntas.jsonl y llenar con abogado
+# Formato: 1 pregunta por línea, JSON válido
+# Campos:
+#   id:                  string único (ej: "P001")
+#   pregunta:            string (pregunta jurídica)
+#   respuesta_esperada:  string (respuesta modelo del abogado, puede ser resumen)
+#   fuentes_esperadas:   array de providencias relevantes (opcional, ej: ["SC3075-2024"])
+#   nivel:               "facil" | "medio" | "dificil"
+#   tema:                string (ej: "tutela contra providencia", "casación civil")
+#   notas:               string (notas del abogado sobre criterios de aceptación)
+#
+# Ejemplo:
+# {"id":"P001","pregunta":"¿Cuáles son los requisitos generales de la acción de tutela contra providencias judiciales?","respuesta_esperada":"La Corte ha establecido seis requisitos generales: (i) relevancia constitucional, (ii) agotamiento de medios ordinarios, (iii) inmediatez, (iv) irregularidad procesal con efecto decisivo, (v) identificación razonable de hechos y derechos, (vi) que no se trate de sentencia de tutela.","fuentes_esperadas":["STC18048-2024","STP16805-2022"],"nivel":"medio","tema":"tutela contra providencia","notas":"Aceptable si menciona al menos 5 de los 6 requisitos."}

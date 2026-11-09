@@ -34,6 +34,7 @@ from api_models import (
     SearchRequest, SearchResponse, SearchResult, StatsResponse,
 )
 from api_rag import RAGError, generate, retrieve
+from rag_safe import verify_citations
 
 APP_VERSION = __import__("json").load(open("stats.json")).get("version", "1.1.5")
 START_TS = time.time()
@@ -198,6 +199,9 @@ def ask(req: AskRequest):
     except RAGError as exc:
         raise HTTPException(status_code=503, detail=str(exc))
 
+    # FASE 2: verificación de citas (sin refusar, solo informar)
+    verified, unverified = verify_citations(answer, results, strict=True)
+
     return AskResponse(
         query=req.query,
         answer=answer,
@@ -206,6 +210,8 @@ def ask(req: AskRequest):
         provider=provider,
         latency_ms=int((time.time() - t0) * 1000),
         tokens_used=tokens_used,
+        verified=verified,
+        unverified=unverified if unverified else None,
     )
 
 
@@ -225,7 +231,9 @@ def ask_stream(req: AskRequest):
             # Stream caracteres en bloques de 40
             for i in range(0, len(answer), 40):
                 yield f"data: {json.dumps({'type': 'token', 'text': answer[i:i+40]})}\n\n"
-            yield f"data: {json.dumps({'type': 'done', 'model': model_used, 'provider': provider})}\n\n"
+            # FASE 2: verificación de citas en el evento done
+            verified, unverified = verify_citations(answer, results, strict=True)
+            yield f"data: {json.dumps({'type': 'done', 'model': model_used, 'provider': provider, 'verified': verified, 'unverified': unverified or None})}\n\n"
         except Exception as exc:
             yield f"data: {json.dumps({'type': 'error', 'detail': str(exc)})}\n\n"
 
