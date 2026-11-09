@@ -359,7 +359,14 @@ def ask_safe(req: AskRequest):
         elapsed = int((time.time() - t0) * 1000)
         return AskResponse(
             query=req.query,
-            answer="No tengo información suficiente en el corpus para responder con certeza.",
+            answer=("La evidencia recuperada para esta consulta es insuficiente para "
+                "una respuesta con respaldo verificable. Para obtener resultados "
+                "precisos, considere:\n"
+                "  - Incluir el identificador de la providencia o el radicado.\n"
+                "  - Acotar el aspecto jurídico específico de la consulta.\n"
+                "  - Indicar el año o período de interés.\n\n"
+                "También puede consultar directamente el portal oficial de la "
+                "Corte Suprema de Justicia de Colombia."),
             sources=raw_sources, model_used="n/a", provider="n/a",
             latency_ms=elapsed, tokens_used=0,
             verified=None, refused=True, confidence=0.0,
@@ -370,9 +377,14 @@ def ask_safe(req: AskRequest):
         elapsed = int((time.time() - t0) * 1000)
         return AskResponse(
             query=req.query,
-            answer=("No tengo información suficiente en el corpus para responder "
-                    "con certeza. Reformula la pregunta o consulta las providencias "
-                    "en el portal oficial de la CSJ."),
+            answer=("La evidencia recuperada para esta consulta es insuficiente para "
+                "una respuesta con respaldo verificable. Para obtener resultados "
+                "precisos, considere:\n"
+                "  - Incluir el identificador de la providencia o el radicado.\n"
+                "  - Acotar el aspecto jurídico específico de la consulta.\n"
+                "  - Indicar el año o período de interés.\n\n"
+                "También puede consultar directamente el portal oficial de la "
+                "Corte Suprema de Justicia de Colombia."),
             sources=raw_sources, model_used="n/a", provider="n/a",
             latency_ms=elapsed, tokens_used=0,
             verified=None, refused=True, confidence=float(max(scores)),

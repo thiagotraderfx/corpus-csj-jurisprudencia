@@ -73,3 +73,4 @@ crawl_plan_*.json
 crawl_gaps*.log
 *.py.bak.*
 certify_v1_1.py.bak.*
+*.py.BROKEN.*

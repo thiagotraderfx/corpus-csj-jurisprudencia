@@ -112,13 +112,33 @@ def generate(query: str, sources: list, model: Optional[str],
     )
 
     system = (
-        "Eres un asistente jurídico experto en jurisprudencia de la Corte Suprema "
-        "de Justicia de Colombia. Responde la pregunta del usuario basándote "
-        "EXCLUSIVAMENTE en el contexto provisto. Cita las fuentes con [N] cuando "
-        "uses información de cada fragmento. Si el contexto no contiene la "
-        "respuesta, di que no tienes evidencia suficiente en el corpus. "
-        "Responde en español, con lenguaje jurídico preciso. "
-        "Usa exclusivamente corchetes ASCII [N] para citar (nunca caracteres CJK)."
+        "Eres un asistente especializado EXCLUSIVAMENTE en jurisprudencia de la "
+        "Corte Suprema de Justicia de Colombia (salas Civil, Penal, Laboral y "
+        "Tutelas).\n\n"
+        "Reglas estrictas:\n"
+        "1. Si la consulta NO corresponde al ámbito jurídico colombiano "
+        "(recetas, deportes, ciencia general, entretenimiento, cultura, etc.), "
+        "responde EXACTAMENTE con: 'Este servicio atiende exclusivamente "
+        "consultas sobre jurisprudencia de la Corte Suprema de Justicia de "
+        "Colombia. La consulta planteada no corresponde a ese ámbito y no puede "
+        "ser atendida. Para otras materias, consulte las fuentes especializadas "
+        "correspondientes.'\n"
+        "2. Si la consulta SÍ es jurídica pero el contexto no contiene "
+        "información aplicable, responde: 'No se encontró jurisprudencia "
+        "aplicable en el acervo actual para esta consulta. Se recomienda "
+        "precisar la consulta indicando providencia, radicado, año o aspecto "
+        "jurídico específico, o consultar directamente el portal oficial de la "
+        "Corte Suprema de Justicia de Colombia.'\n"
+        "3. NUNCA uses las palabras 'corpus', 'base de datos', 'memoria', "
+        "'índice', 'acervo interno', 'sistema', 'modelo', 'algoritmo', ni "
+        "jerga técnica interna. El usuario solo debe conocer el servicio y "
+        "su ámbito de aplicación.\n"
+        "4. Basa tu respuesta EXCLUSIVAMENTE en el contexto provisto.\n"
+        "5. Cita con [N] donde N corresponde al fragmento del contexto. Usa "
+        "exclusivamente corchetes ASCII [N] (nunca caracteres CJK).\n"
+        "6. NUNCA inventes providencias, radicados, fechas ni nombres de "
+        "ponentes.\n"
+        "7. Responde en español, con lenguaje jurídico preciso y profesional."
     )
     user = f"Contexto:\n{context}\n\nPregunta: {query}\n\nRespuesta:"
 
@@ -254,7 +274,14 @@ def generate_safe(query, index, k=5, model=None, refusal_threshold=0.30):
 
     if not sources:
         return {
-            "answer": "No tengo información suficiente en el corpus.",
+            "answer": ("La evidencia recuperada para esta consulta es insuficiente para "
+                       "una respuesta con respaldo verificable. Para obtener resultados "
+                       "precisos, considere:\n"
+                       "  - Incluir el identificador de la providencia o el radicado.\n"
+                       "  - Acotar el aspecto jurídico específico de la consulta.\n"
+                       "  - Indicar el año o período de interés.\n\n"
+                       "También puede consultar directamente el portal oficial de la "
+                       "Corte Suprema de Justicia de Colombia."),
             "sources": [], "refused": True, "verified": None,
             "confidence": 0.0, "citations": [], "unverified": [],
             "reason": "no_retrieval_results",
@@ -264,9 +291,14 @@ def generate_safe(query, index, k=5, model=None, refusal_threshold=0.30):
 
     if should_refuse(scores, refusal_threshold):
         return {
-            "answer": ("No tengo información suficiente en el corpus para responder "
-                       "con certeza. Reformula la pregunta o consulta las providencias "
-                       "en el portal oficial de la CSJ."),
+            "answer": ("La evidencia recuperada para esta consulta es insuficiente para "
+                       "una respuesta con respaldo verificable. Para obtener resultados "
+                       "precisos, considere:\n"
+                       "  - Incluir el identificador de la providencia o el radicado.\n"
+                       "  - Acotar el aspecto jurídico específico de la consulta.\n"
+                       "  - Indicar el año o período de interés.\n\n"
+                       "También puede consultar directamente el portal oficial de la "
+                       "Corte Suprema de Justicia de Colombia."),
             "sources": sources, "refused": True, "verified": None,
             "confidence": max(scores), "citations": [], "unverified": [],
             "reason": "retrieval_weak: max=%.3f < %.2f" % (max(scores), refusal_threshold),

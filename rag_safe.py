@@ -76,9 +76,16 @@ def safe_answer(question, context_chunks, scores, llm_call,
 
     if should_refuse(scores, refusal_threshold):
         return {
-            "answer": ("No tengo información suficiente en el corpus para responder "
-                       "con certeza. Reformula la pregunta o consulta las providencias "
-                       "en el portal oficial de la CSJ."),
+            "answer": (
+                "La evidencia recuperada para esta consulta es insuficiente para "
+                "una respuesta con respaldo verificable. Para obtener resultados "
+                "precisos, considere:\n"
+                "  - Incluir el identificador de la providencia o el radicado.\n"
+                "  - Acotar el aspecto jurídico específico de la consulta.\n"
+                "  - Indicar el año o período de interés.\n\n"
+                "También puede consultar directamente el portal oficial de la "
+                "Corte Suprema de Justicia de Colombia."
+            ),
             "refused": True,
             "verified": None,
             "confidence": max_score,
