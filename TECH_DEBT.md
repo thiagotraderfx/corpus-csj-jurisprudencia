@@ -74,3 +74,12 @@
 4. Filtro de sala server-side: investigar payload del navegador con DevTools (Opción C)
 
 **Estado actual**: corpus 207 docs (212 con los 5 penales crawleados hoy), certificado 13/13, publicado con DOI. Aceptable para uso investigativo. Limitaciones documentadas honestamente.
+
+## Fase B.1/B.2 — Descubierta 2026-11-08
+
+- **re_embed_nvidia.py NO es incremental** cuando m063 regenera chunks
+  - Checkpoint usa posiciones, no IDs
+  - m063 cambia posiciones → checkpoint inválido → re-embed desde 0
+  - Efecto: 12 docs nuevos → 45-90 min re-embed (era 5-10 min esperado)
+  - Fix P2: checkpoint como dict {chunk_id: embedding}
+  - Impacto: re-embeds futuros de 30 docs tomarán 40-60 min en vez de 5
