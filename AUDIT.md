@@ -385,3 +385,122 @@ Esto indica que el juez **no alucina juicios aleatorios**.
 - Corpus 321 docs, 23982 chunks, 2048d, `INTEGRITY.sha256` OK
 - Certify 14/14 CERTIFIED
 - Snapshot de rollback: `v1.1.6-pre-improvements` (4bd7f63)
+
+
+---
+
+## Precisión metodológica sobre Fase 3.5 (auditoría 2026-11-09)
+
+La sección anterior documenta ejecuciones reales, pero contiene afirmaciones
+que requieren precisión. Se aclaran sin invalidar el trabajo realizado.
+
+### Reserva metodológica expresa
+
+> **Estado Fase 3.5: smoke test del harness ejecutado y documentado.
+> Validación metodológica integral pendiente.**
+
+Esto significa: el harness funciona end-to-end (uvicorn real → `/ask/safe`
+→ juez gpt-4o-mini → reporte JSON), pero los resultados numéricos preliminares
+**no constituyen validación del sistema**.
+
+### Corrección #1 — Distinguir verificación documental de verificación de calidad
+
+`verify_doc()` en `benchmark/llm_judge.py` verifica que las providencias
+referenciadas en `sources[].providencia` existan en `chunks.jsonl`.
+Es una verificación de **existencia documental**, no de **corrección jurídica**.
+
+Que una providencia exista en el corpus NO significa que su contenido respalde
+la afirmación de la IA. Ese segundo nivel de verificación requiere NLI real
+(Fase D, pendiente).
+
+**Verificación independiente ejecutada en esta sesión:**
+
+- `verify_doc()` (dentro de `evaluate_v2.py`): 0/4 con citas inválidas
+- Verificación independiente (contra set real de `chunks.jsonl`): confirmada
+
+Las cifras "0 citas inventadas" corresponden a esta verificación de existencia.
+Son correctas para lo que miden, no para lo que no miden.
+
+### Corrección #2 — Recall@5 y Precision@5
+
+El promedio reportado (0.0) mezcla dos casos distintos:
+
+- **DEMO-001**: tiene `fuentes_esperadas` (C-590-2005), pero **C-590-2005 NO
+  está en el corpus** (es Corte Constitucional, el corpus es solo CSJ).
+  → `R@5=0.0` es correcto: no se puede recuperar lo que no está indexado.
+- **DEMO-002, DEMO-003, DEMO-004**: sin `fuentes_esperadas`.
+  → `R@5` y `P@5` son `N/A` explícito en código (reason=`sin_fuentes_esperadas`).
+
+El promedio 0.0 **no es un fallo del retrieval**. Es una mezcla de un cero
+esperado (fuente fuera de corpus) y tres `N/A`. Reportar "0.0" como métrica
+de retrieval es engañoso sin esta distinción.
+
+### Corrección #3 — Consistencia del juez
+
+La variación entre dos corridas (≤0.25 puntos por pregunta) indica
+**consistencia preliminar** en 4 preguntas × 2 ejecuciones.
+
+NO permite concluir:
+- Estabilidad estadística general
+- Validez jurídica del juez
+- Que el juez sea "confiable" más allá de este smoke test
+
+Se requieren ≥50 preguntas × ≥3 corridas para hablar de estabilidad seria.
+
+### Corrección #4 — DEMO-004 y la cobertura penal
+
+La puntuación baja de DEMO-004 (2.1-2.3) es **una señal a investigar**,
+no una conclusión sobre deficiencia estructural del corpus.
+
+Para atribuirla a cobertura penal dispersa habría que:
+- Ver qué documentos recuperó el sistema (`sources` exactas)
+- Comparar con documentos pertinentes disponibles en el corpus
+- Contrastar con criterios del golden standard
+
+Lo único demostrado: **el juez detectó un área de mejora**. La causa
+específica requiere investigación, no afirmación.
+
+### Sobre el script ad-hoc del Comando 3
+
+El script mostrado en el Comando 3 que reporta "Total citas: 20 / Citas
+verificadas OK: 20" hace un **conteo trivial** (`citas_total - 0`), NO una
+verificación real contra el corpus. La verificación real de `sources[].providencia`
+la hizo `evaluate_v2.py` (vía `verify_doc()`), y ese resultado es el que
+consta en el reporte JSON de evaluación.
+
+El script ad-hoc es cosmético. No invalida `evaluate_v2.py`, pero tampoco
+lo refuerza. Se corrige el AUDIT para no atribuirle mérito de verificación.
+
+### Qué está demostrado vs qué está pendiente
+
+**Demostrado:**
+- Harness ejecuta 4 preguntas end-to-end sin errores de ejecución
+- `verify_doc()` (dentro de `evaluate_v2.py`) encuentra 0 providencias
+  inexistentes en las `sources` de las 4 respuestas
+- Juez gpt-4o-mini responde con JSON estructurado de forma consistente
+  en 2 corridas
+
+**Pendiente (requiere humano o investigación):**
+- 50 preguntas jurídicamente defendibles (abogado)
+- Verificación de fuentes por el abogado ANTES de escribir las preguntas
+- NLI real para verificar entailment semántico (Fase D)
+- Múltiples corridas para estabilidad estadística
+
+### Snapshot auditable
+
+Los resultados crudos están en `$HOME/tmp/bench_snapshots/20261109_223005/`
+(no en git, por tamaño). Incluyen:
+- `run_20261109_222207_4d7ccc4420d0.json` (manifest)
+- `respuestas_20261109_222207_4d7ccc4420d0.jsonl` (output crudo)
+- 2 archivos de evaluación JSON (corridas 1 y 2)
+
+Cualquier auditor puede reproducirlas con:
+    python3 benchmark/run_benchmark.py
+    python3 benchmark/evaluate_v2.py --run-id <run_id_generado>
+
+### Sistema intacto
+
+- `api.py`, `api_rag.py`, `rag_safe.py` sin cambios
+- Corpus 321 docs, 23982 chunks, 2048d, `INTEGRITY.sha256` OK
+- Certify 14/14 CERTIFIED
+- Snapshot de rollback: `v1.1.6-pre-improvements` (4bd7f63)
