@@ -1,79 +1,107 @@
 #!/usr/bin/env python3
-"""Ejecuta el benchmark contra el sistema corriendo en localhost:8000.
-
-Requiere:
-- benchmark/data/preguntas.jsonl (escrito por el abogado)
-- uvicorn api:app --host 127.0.0.1 --port 8000 (en otra terminal)
-"""
-import json, os, sys, time, requests
+"""Ejecuta benchmark contra uvicorn con run_id trazable."""
+import hashlib, json, os, sys, time, requests
 from datetime import datetime
 from pathlib import Path
 
 BENCH_DIR = Path(__file__).parent
-PREGUNTAS = BENCH_DIR / "data" / "preguntas.jsonl"
 RESULTS_DIR = BENCH_DIR / "results"
-API_URL = os.environ.get("BENCH_API", "http://127.0.0.1:8000")
+DEFAULT_API = "http://127.0.0.1:8803"
+DEFAULT_INPUT = BENCH_DIR / "data" / "preguntas_demo.jsonl"
 
 
-def cargar_preguntas():
-    if not PREGUNTAS.exists():
-        print(f"ERROR: {PREGUNTAS} no existe.")
-        print(f"       Copia benchmark/data/preguntas_template.jsonl y escribe tus preguntas.")
-        sys.exit(1)
-    preguntas = []
-    with open(PREGUNTAS) as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            try:
-                preguntas.append(json.loads(line))
+def cargar(path):
+    out = []
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            try: out.append(json.loads(line))
             except json.JSONDecodeError as e:
-                print(f"WARN: JSON invalido en linea: {line[:80]}... ({e})")
-    return preguntas
+                print(f"WARN: {e}")
+    return out
 
 
-def run():
-    preguntas = cargar_preguntas()
+def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--input", default=str(DEFAULT_INPUT))
+    ap.add_argument("--api", default=os.environ.get("BENCH_API", DEFAULT_API))
+    ap.add_argument("--k", type=int, default=5)
+    args = ap.parse_args()
+
+    input_path = Path(args.input)
+    if not input_path.exists():
+        print(f"ERROR: {input_path} no existe"); sys.exit(1)
+
+    preguntas = cargar(input_path)
     if not preguntas:
-        print("ERROR: No hay preguntas validas.")
-        sys.exit(1)
+        print("ERROR: 0 preguntas"); sys.exit(1)
 
-    print(f"Preguntas cargadas: {len(preguntas)}")
-    print(f"API: {API_URL}")
+    # run_id = timestamp + hash(input) → trazabilidad exacta
+    input_hash = hashlib.sha256(input_path.read_bytes()).hexdigest()[:12]
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_id = f"{ts}_{input_hash}"
 
     RESULTS_DIR.mkdir(exist_ok=True)
-    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out = RESULTS_DIR / f"respuestas_{ts}.jsonl"
+    manifest_path = RESULTS_DIR / f"run_{run_id}.json"
+    respuestas_path = RESULTS_DIR / f"respuestas_{run_id}.jsonl"
 
-    with open(out, "w") as f:
+    # Escribir manifest ANTES de ejecutar (si falla, queda traza)
+    manifest = {
+        "run_id": run_id,
+        "input_file": str(input_path.resolve()),
+        "input_hash": input_hash,
+        "api_url": args.api,
+        "k": args.k,
+        "started_at": datetime.now().isoformat(),
+        "n_questions": len(preguntas),
+        "status": "running",
+    }
+    manifest_path.write_text(json.dumps(manifest, indent=2))
+
+    print(f"run_id: {run_id}")
+    print(f"input:  {input_path.name} ({len(preguntas)} preguntas, hash={input_hash})")
+    print(f"api:    {args.api}")
+    print(f"out:    {respuestas_path.name}")
+
+    ok_count, err_count = 0, 0
+    with open(respuestas_path, "w") as f:
         for i, p in enumerate(preguntas, 1):
-            print(f"  [{i}/{len(preguntas)}] {p['id']}: {p['pregunta'][:60]}...", end=" ", flush=True)
+            pid = p.get("id", f"Q{i}")
+            print(f"  [{i}/{len(preguntas)}] {pid}...", end=" ", flush=True)
             t0 = time.time()
             try:
-                r = requests.post(
-                    f"{API_URL}/ask/safe",
-                    json={"query": p["pregunta"], "k": 5},
-                    timeout=120,
-                )
+                r = requests.post(f"{args.api}/ask/safe",
+                    json={"query": p["pregunta"], "k": args.k}, timeout=120)
                 r.raise_for_status()
                 resp = r.json()
                 resp["_bench"] = {
-                    "id": p["id"],
-                    "nivel": p.get("nivel"),
-                    "tema": p.get("tema"),
+                    "id": pid, "nivel": p.get("nivel"), "tema": p.get("tema"),
                     "latency_s": round(time.time() - t0, 2),
                     "status": r.status_code,
                 }
                 f.write(json.dumps(resp, ensure_ascii=False) + "\n")
+                ok_count += 1
                 print(f"OK ({resp['_bench']['latency_s']}s)")
             except Exception as e:
-                print(f"FAIL {type(e).__name__}: {e}")
-                f.write(json.dumps({"_bench": {"id": p["id"], "error": str(e)}}, ensure_ascii=False) + "\n")
+                err_count += 1
+                print(f"FAIL: {type(e).__name__}: {e}")
+                f.write(json.dumps({
+                    "_bench": {"id": pid, "error": str(e)},
+                    "answer": "", "sources": [], "refused": None, "verified": None,
+                }, ensure_ascii=False) + "\n")
 
-    print(f"\nResultados: {out}")
-    print(f"Siguiente: python3 benchmark/evaluate.py")
+    manifest["status"] = "completed"
+    manifest["ended_at"] = datetime.now().isoformat()
+    manifest["ok_count"] = ok_count
+    manifest["err_count"] = err_count
+    manifest_path.write_text(json.dumps(manifest, indent=2))
+
+    print(f"\n  Resultado: {ok_count} OK, {err_count} ERROR")
+    print(f"  Manifest: {manifest_path.name}")
+    print(f"  Respuestas: {respuestas_path.name}")
+    print(f"\n  Evaluar: python3 benchmark/evaluate_v2.py --run-id {run_id}")
 
 
 if __name__ == "__main__":
-    run()
+    main()

@@ -78,3 +78,7 @@ certify_v1_1.py.bak.*
 AUDIT.md.bak.*
 benchmark/data/preguntas.jsonl
 benchmark/results/
+benchmark/.pre_exec_*
+benchmark/results/run_*
+benchmark/results/respuestas_*
+benchmark/results/evaluacion_*

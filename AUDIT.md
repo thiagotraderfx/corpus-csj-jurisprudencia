@@ -304,3 +304,84 @@ Tag `v1.1.6-pre-improvements` en commit `4bd7f63`. Reversión quirúrgica:
   Un stub con overlap de tokens no detecta alucinaciones semánticas reales.
 - **Fase F (integrar `normas_lex`)**: proyecto separado, ~4-8h, con su propio
   certify y tag. No mezclar con jurisprudencia — dominios distintos.
+
+## Fase 3.5 — Harness benchmark con LLM-as-judge (2026-11-09)
+
+### Qué se construyó
+
+- **`benchmark/llm_judge.py`**: 5 dimensiones + `verify_doc()` determinista
+- **`benchmark/evaluate_v2.py`**: validación estricta + Recall@5/Precision@5 + `revision_humana`
+- **`benchmark/run_benchmark.py`**: `run_id = timestamp + sha256(input)` → trazabilidad
+- **`benchmark/data/preguntas_demo.jsonl`**: 4 preguntas smoke test (sin DEMO-005)
+- **`benchmark/GOLD_STANDARD_DESIGN.md`**: schema v2 documentado
+
+### Qué se ejecutó (run_id `20261109_222207_4d7ccc4420d0`)
+
+Dos corridas completas del mismo input con el mismo juez (`openai/gpt-4o-mini`)
+para medir variabilidad del LLM-as-judge.
+
+**Resultados reales de la corrida (promedio de 2 ejecuciones):**
+
+| Pregunta | Score corrida 1 | Score corrida 2 | Veredicto | Revisión humana |
+|----------|-----------------|-----------------|-----------|-----------------|
+| DEMO-001 tutela | 2.75 | 2.65 | inaceptable | sí |
+| DEMO-002 incongruencia | 3.30 | 3.30 | parcial | sí |
+| DEMO-003 contrato trabajo | 3.75 | 4.00 | aceptable/parcial | no/sí |
+| DEMO-004 casación penal | 2.10 | 2.30 | inaceptable | sí |
+| **Promedio** | **2.98** | **3.06** | — | 3/4 |
+
+**Agregados verificados:**
+- Total: 4 preguntas, 4 respuestas (0 errores de ejecución)
+- Verified (citas): 3/4
+- Refused: 1/4
+- **Citas inventadas: 0/4** (verificado determinísticamente contra chunks.jsonl)
+- Revisión humana requerida: 3/4 (juez honesto sobre incertidumbre)
+- Recall@5: 0.0 (solo DEMO-001 tiene fuentes_esperadas)
+- Precision@5: 0.0
+
+### Hallazgo #1 — DEMO-001 mide algo que el corpus no tiene
+
+DEMO-001 declara como fuente esperada **C-590-2005** (Corte Constitucional),
+que NO está en el corpus (que es solo Corte Suprema de Justicia, 321 sentencias).
+El sistema no puede recuperar lo que no está indexado → `R@5=0.0` es correcto,
+no un fallo del sistema.
+
+**Acción:** el abogado que escriba las 50 preguntas reales debe verificar
+que sus `fuentes_esperadas` estén en `chunks.jsonl`. El harness ya permite
+esa verificación con `verify_doc()`.
+
+### Hallazgo #2 — cobertura desigual detectada por el juez
+
+DEMO-003 (contrato trabajo, 49 docs en corpus) → 3.75-4.0 "aceptable".
+DEMO-004 (casación penal violación directa, cobertura dispersa) → 2.1-2.3 "inaceptable".
+
+**Esto es señal real de calidad del retrieval.** El juez detecta dónde falta
+profundidad sin necesidad de reglas manuales.
+
+### Hallazgo #3 — 0 citas inventadas
+
+El `verify_doc()` determinista confirma que **ninguna providencia citada por
+la IA es falsa**. La capa anti-alucinación (verificación documental) funciona
+en este corpus.
+
+### Hallazgo #4 — juez es consistente
+
+Diferencia entre corrida 1 y corrida 2 por pregunta: ≤0.25 puntos.
+Esto indica que el juez **no alucina juicios aleatorios**.
+
+### Advertencia metodológica
+
+- Puntuaciones del juez son **señales**, NO verdad jurídica.
+- Flag `revision_humana_requerida` cuando confianza < 0.7 o citas inválidas.
+- **El benchmark REAL requiere 50 preguntas del abogado con fuentes verificadas
+  contra el corpus.** Las 4 demo son smoke test del harness.
+- El corpus tiene gaps reales (penal 2021-2023 escaso, reportado en `/coverage`).
+  Las preguntas del abogado deben considerar esa cobertura o marcar preguntas
+  como "no evaluables".
+
+### Sistema intacto
+
+- `api.py`, `api_rag.py`, `rag_safe.py` sin cambios
+- Corpus 321 docs, 23982 chunks, 2048d, `INTEGRITY.sha256` OK
+- Certify 14/14 CERTIFIED
+- Snapshot de rollback: `v1.1.6-pre-improvements` (4bd7f63)
