@@ -47,3 +47,30 @@ Ver v1.1.0-certified.json para checks machine-readable.
 - Evaluación de respuestas LLM
 - Crawler concurrente
 - Dedup de chunks boilerplate
+
+---
+
+## Anexo Q4 — Cotejo con Relatoría CSJ
+
+**Fecha:** 2026-11-10
+
+Los 10 casos especiales identificados en Q2 fueron cotejados con la
+Relatoría de la Corte Suprema de Justicia:
+
+- 5 aceptados sin observación
+- 5 aceptados con nota explicativa
+- 0 rechazados
+
+Detalle completo en `Q4_RESULTADOS.md` y `Q4_RESULTADOS.json`.
+
+**Corrección pendiente al manifest:** STP17662-2024 (ID 911525) tiene
+fecha `2024-12-10` en el manifest; la fecha real del documento es
+`2024-10-10`. El caso está aceptado; la corrección es de precisión.
+
+Con este anexo, **Q2 queda formalmente cerrado** para las 321
+providencias del corpus:
+
+- 311 limpias (sin observación desde Q2)
+- 10 cotejadas con Relatoría (este anexo)
+- 0 rechazadas
+
