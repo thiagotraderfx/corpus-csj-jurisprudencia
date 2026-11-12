@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-11-11",
+  "checks": {
+    "50 filas válidas": true,
+    "48 providencias únicas": true,
+    "Ratio vacía": true,
+    "Distribución por sala": true,
+    "Firma presente": true,
+    "≤250 caracteres": true
+  },
+  "excepcion_documentada": {
+    "regla_mandato": "MANDATO_RECTOR_Q3 exige 'exactamente una providencia podrá tener una segunda pregunta'",
+    "providencias_con_doble_pregunta": [
+      "SC444-2023",
+      "SP1317-2026"
+    ],
+    "decision_direccion_juridica": "Aprobada para no sacrificar la calidad de las 50 preguntas"
+  },
+  "veredicto": "PASS_CON_EXCEPCION"
+}

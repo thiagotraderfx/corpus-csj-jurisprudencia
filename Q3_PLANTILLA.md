@@ -1,95 +1,57 @@
-# Q3 — Selección de 50 Preguntas Jurídicas
-
-**Fecha de inicio:** _____________________
-**Abogado:** _____________________________
-**Corpus disponible:** 321 providencias (311 limpias + 10 cotejadas)
-
-## Criterios de selección
-
-1. Relevancia jurisprudencial
-2. Controversia
-3. Utilidad práctica
-4. Cobertura temática (Sala, año, tema)
-
-## Instrucciones
-
-- Seleccionar 50 preguntas de investigación sobre las 321 providencias
-- Cada pregunta debe anclarse a UNA providencia principal
-- No llenar RATIO aún (eso es Q3-b)
-- No llenar REGLA ESPERADA aún (eso es Q3-c)
-
-## Distribución de referencia
-
-| Sala | Providencias | Preguntas sugeridas |
-|---|---|---|
-| Civil | 135 | 20 |
-| Laboral | 122 | 18 |
-| Penal | 64 | 12 |
-| **Total** | **321** | **50** |
-
-## Plantilla
+# Q3_PLANTILLA.md — BANCO CONSOLIDADO DE 50 PREGUNTAS JURÍDICAS
 
 | # | Pregunta | Providencia | Sala | Tema | CPX | Criterio | Ratio |
 |---|---|---|---|---|---|---|---|
-| 1 | | | | | | | |
-| 2 | | | | | | | |
-| 3 | | | | | | | |
-| 4 | | | | | | | |
-| 5 | | | | | | | |
-| 6 | | | | | | | |
-| 7 | | | | | | | |
-| 8 | | | | | | | |
-| 9 | | | | | | | |
-| 10 | | | | | | | |
-| 11 | | | | | | | |
-| 12 | | | | | | | |
-| 13 | | | | | | | |
-| 14 | | | | | | | |
-| 15 | | | | | | | |
-| 16 | | | | | | | |
-| 17 | | | | | | | |
-| 18 | | | | | | | |
-| 19 | | | | | | | |
-| 20 | | | | | | | |
-| 21 | | | | | | | |
-| 22 | | | | | | | |
-| 23 | | | | | | | |
-| 24 | | | | | | | |
-| 25 | | | | | | | |
-| 26 | | | | | | | |
-| 27 | | | | | | | |
-| 28 | | | | | | | |
-| 29 | | | | | | | |
-| 30 | | | | | | | |
-| 31 | | | | | | | |
-| 32 | | | | | | | |
-| 33 | | | | | | | |
-| 34 | | | | | | | |
-| 35 | | | | | | | |
-| 36 | | | | | | | |
-| 37 | | | | | | | |
-| 38 | | | | | | | |
-| 39 | | | | | | | |
-| 40 | | | | | | | |
-| 41 | | | | | | | |
-| 42 | | | | | | | |
-| 43 | | | | | | | |
-| 44 | | | | | | | |
-| 45 | | | | | | | |
-| 46 | | | | | | | |
-| 47 | | | | | | | |
-| 48 | | | | | | | |
-| 49 | | | | | | | |
-| 50 | | | | | | | |
-
-## Notas sobre casos especiales
-
-Los siguientes casos tienen notas específicas:
-- **STP17662-2024**: fecha manifest con error de mes (oct, no dic).
-- **SL3434-2024**: fecha firma (10/12) vs publicación (16/12).
-- **SC3972-2022**: sufijo -00 vs -01 (misma causa).
-- **STC16508-2022** / **STL15987-2022**: radicado de tutela ≠ proceso de origen.
-- **STP21582-2025**: errata de año en encabezado.
+| 1 | ¿Qué criterios permiten establecer si un bien calificado como fiscal es susceptible de prescripción adquisitiva cuando se discute su efectiva destinación al uso público? | SC056-2026 | Civil | Prescripción y bienes fiscales | 4 | relevancia | |
+| 2 | ¿Exige la responsabilidad médica por pérdida de oportunidad demostrar que el resultado favorable se habría producido con certeza, o basta acreditar la privación de una probabilidad seria y real? | SC1311-2026 | Civil | Responsabilidad médica y pérdida oportunidad | 4 | controversia | |
+| 3 | ¿Qué incidencia tiene la falta de notificación de la agravación del riesgo en el seguro de cumplimiento cuando se discute su relación con la ocurrencia del siniestro? | SC1983-2025 | Civil | Seguro y agravación del riesgo | 3 | utilidad | |
+| 4 | ¿Cuál es el término aplicable a la acción promovida por el hijo extramatrimonial reconocido después de la partición para obtener la adjudicación de los bienes herenciales omitidos? | SC2109-2025 | Civil | Partición herencial y prescripción | 4 | controversia | |
+| 5 | ¿Cómo se distribuye la carga probatoria en la responsabilidad por productos defectuosos cuando el daño alegado también podría explicarse por factores de manejo del cultivo o condiciones ambientales? | SC2954-2024 | Civil | Productos defectuosos y prueba | 3 | cobertura | |
+| 6 | ¿Está legitimado el poseedor para reclamar los perjuicios derivados de la destrucción de bienes muebles sobre los que ejerce actos posesorios, aunque no tenga sentencia de pertenencia? | SC3047-2024 | Civil | Posesión y legitimación indemnizatoria | 3 | relevancia | |
+| 7 | ¿Qué efectos jurídicos produce la separación de hecho de los cónyuges superior a dos años sobre la sociedad conyugal y la eventual configuración de una sociedad patrimonial entre compañeros permanentes? | SC3085-2024 | Civil | Sociedad conyugal y unión marital | 5 | controversia | |
+| 8 | ¿Cuáles son los límites del derecho de retención del transportador sobre las mercancías cuando el valor de la carga retenida resulta desproporcionado frente a los fletes adeudados? | SC3285-2024 | Civil | Retención y transporte mercantil | 4 | controversia | |
+| 9 | ¿Qué exigencias de razonabilidad y preaviso condicionan la terminación unilateral de un contrato atípico de concesión comercial para determinar si existió ruptura intempestiva indemnizable? | SC3951-2022 | Civil | Desahucio en concesión comercial | 4 | relevancia | |
+| 10 | ¿Desde qué momento se cuenta la prescripción de la acción de simulación ejercida por los herederos legitimarios cuando actúan en defensa de un derecho propio afectado por el negocio? | SC396-2023 | Civil | Simulación y prescripción hereditaria | 4 | controversia | |
+| 11 | ¿En qué circunstancias la sociedad fiduciaria responde con su patrimonio propio por las obligaciones derivadas de un encargo fiduciario y cuándo actúa exclusivamente como vocera del patrimonio autónomo? | SC3978-2022 | Civil | Responsabilidad fiduciaria y vocería | 5 | relevancia | |
+| 12 | ¿Qué valor tiene, como contraindicio dentro de un proceso de simulación, que comprador y vendedor hayan declarado coincidentemente el negocio ante la administración tributaria? | SC3979-2022 | Civil | Simulación y prueba tributaria | 4 | controversia | |
+| 13 | ¿En qué supuestos la intervención de un heredero en el ocultamiento de bienes de la sucesión permite aplicar la sanción prevista en el artículo 1288 del Código Civil? | SC444-2023 | Civil | Ocultamiento de bienes herenciales | 5 | relevancia | |
+| 14 | ¿Puede extenderse por analogía la sanción del artículo 1288 del Código Civil a la pérdida de gananciales regulada por el artículo 1824, o lo impide su naturaleza sancionatoria? | SC444-2023 | Civil | Analogía en sanciones civiles | 5 | controversia | |
+| 15 | ¿Qué alcance tiene la garantía de idoneidad y cómo debe examinarse su incumplimiento frente a los defectos o vicios redhibitorios alegados por el adquirente? | SC877-2022 | Civil | Idoneidad y vicios redhibitorios | 4 | cobertura | |
+| 16 | ¿Es apelable el auto que declara no probadas las excepciones previas cuando se examina la taxatividad de los recursos prevista en el artículo 321 del Código General del Proceso? | STC16024-2024 | Civil | Apelación y excepciones previas | 3 | utilidad | |
+| 17 | ¿Puede declararse la reticencia del tomador por omitir antecedentes de salud sin examinar la incidencia de esa omisión y el deber de diligencia de la aseguradora en la valoración del riesgo? | STC16132-2022 | Civil | Reticencia y deber de información | 4 | controversia | |
+| 18 | ¿Cuándo la valoración de la prueba testimonial sobre la intervención del corredor permite concluir que su gestión no fue determinante para la celebración del negocio y negar la comisión? | STC16508-2022 | Civil | Corretaje y nexo causal | 3 | cobertura | |
+| 19 | ¿Cómo se determina la procedencia y el alcance temporal de la indemnización moratoria del artículo 65 del CST cuando la demanda se presenta después de transcurridos dos años desde la terminación del contrato? | SL913-2026 | Laboral | Indemnización moratoria y prescripción | 5 | relevancia | |
+| 20 | ¿En qué condiciones puede aplicarse el principio de la condición más beneficiosa para reconocer una pensión de invalidez bajo el Acuerdo 049 de 1990 cuando la estructuración ocurrió bajo una legislación posterior? | SL1304-2026 | Laboral | Condición más beneficiosa pensional | 4 | controversia | |
+| 21 | ¿Cuándo el auxilio habitacional permanente constituye salario para liquidar prestaciones sociales, atendiendo a su finalidad remuneratoria y a las condiciones en que fue reconocido? | SL1371-2026 | Laboral | Salario y auxilio habitacional | 3 | utilidad | |
+| 22 | ¿Qué circunstancias permiten reconocer la estabilidad laboral reforzada por razones de salud y qué relevancia tienen el conocimiento del empleador y la situación médica del trabajador al momento del despido? | SL3293-2024 | Laboral | Estabilidad laboral y salud | 4 | relevancia | |
+| 23 | ¿Puede una causa objetiva de disolución o liquidación empresarial justificar la terminación del contrato de un trabajador protegido por estabilidad laboral reforzada, y qué debe acreditarse para desvirtuar la discriminación? | SL3297-2024 | Laboral | Fuero de salud y liquidación | 4 | controversia | |
+| 24 | ¿Qué alcance tiene la protección de estabilidad laboral reforzada cuando el empleador invoca una causa objetiva para terminar el contrato y se discute la situación de salud del trabajador? | SL3335-2024 | Laboral | Estabilidad laboral y causa objetiva | 4 | relevancia | |
+| 25 | ¿Qué efectos produce la utilización sucesiva de empresas de servicios temporales para atender necesidades permanentes de la empresa usuaria respecto de la responsabilidad laboral y la buena fe patronal? | SL3341-2024 | Laboral | Empresas temporales y solidaridad | 4 | utilidad | |
+| 26 | ¿Qué relevancia tienen el conocimiento del embarazo por el empleador y la autorización de la autoridad laboral para determinar la eficacia de la terminación del contrato de una trabajadora gestante? | SL3359-2024 | Laboral | Embarazo y estabilidad laboral | 4 | controversia | |
+| 27 | ¿Qué elementos permiten establecer la subordinación en la prestación personal de servicios médicos y diferenciar el contrato de trabajo de una relación civil de prestación de servicios? | SL3394-2024 | Laboral | Subordinación y servicios médicos | 3 | cobertura | |
+| 28 | ¿Qué alcance tiene la transacción laboral cuando se discute la disponibilidad de los derechos objeto del acuerdo y la existencia de una controversia sobre su reconocimiento o exigibilidad? | SL3395-2024 | Laboral | Transacción y derechos laborales | 4 | relevancia | |
+| 29 | ¿Cómo incide la incertidumbre razonable sobre la existencia del contrato de trabajo en la valoración de la buena fe patronal y en la imposición de la sanción por no consignación de cesantías? | SL3402-2024 | Laboral | Contrato realidad y cesantías | 4 | controversia | |
+| 30 | ¿Qué condiciones de validez debe reunir la transacción celebrada para terminar el vínculo laboral y qué efectos produce el acuerdo cuando se discute la existencia de derechos ciertos e indiscutibles? | SL3434-2024 | Laboral | Transacción y terminación laboral | 4 | relevancia | |
+| 31 | ¿Cuándo la coacción alegada al suscribir una transacción laboral afecta su validez y cómo debe examinarse la disponibilidad de los derechos comprendidos en el acuerdo? | SL3442-2024 | Laboral | Coacción y transacción laboral | 4 | controversia | |
+| 32 | ¿Puede la creencia razonable del empleador sobre el carácter no salarial de las comisiones, sustentada en los acuerdos celebrados con el trabajador, excluir la indemnización moratoria del artículo 65 del CST? | SL3508-2024 | Laboral | Buena fe y comisiones salariales | 3 | utilidad | |
+| 33 | ¿Es compatible el reconocimiento de la pensión de vejez del Régimen de Prima Media con la indemnización sustitutiva correspondiente a cotizaciones efectuadas en un régimen pensional exceptuado? | SL4216-2022 | Laboral | Compatibilidad de prestaciones pensionales | 4 | controversia | |
+| 34 | ¿Vulnera el debido proceso la decisión del Tribunal que omite resolver los argumentos formulados mediante apelación adhesiva y qué consecuencias tiene esa omisión para la validez de la providencia? | STL15987-2022 | Laboral | Apelación adhesiva y debido proceso | 3 | cobertura | |
+| 35 | ¿Qué consecuencias tiene la ausencia de control posterior de garantías sobre la evidencia digital obtenida de dispositivos incautados y cómo debe valorarse esa exigencia cuando el expediente registra una audiencia de control? | SP248-2025 | Penal | Evidencia digital y control posterior | 4 | relevancia | |
+| 36 | ¿Cuáles son los límites del principio de confianza para atribuir responsabilidad penal al gobernador por irregularidades contractuales cuando la custodia y el control material de los bienes corresponden a otros funcionarios? | SP330-2026 | Penal | Principio de confianza y custodia | 5 | relevancia | |
+| 37 | ¿Qué elementos permiten establecer la relevancia penal de un convenio interadministrativo cuando se cuestiona su utilización para eludir las exigencias legales de contratación y favorecer intereses particulares? | SP463-2023 | Penal | Convenios y contratación estatal | 4 | controversia | |
+| 38 | ¿Cuándo la interceptación de comunicaciones ordenada por una fiscal sin motivos fundados y las decisiones posteriores adoptadas en la indagación pueden configurar prevaricato y violación ilícita de comunicaciones? | SP598-2026 | Penal | Interceptación y prevaricato | 4 | utilidad | |
+| 39 | ¿Qué criterios permiten atribuir objetivamente el resultado mortal a la actuación del personal de enfermería cuando se discute la administración de un medicamento por una vía o en condiciones contrarias a la prescripción médica? | SP682-2026 | Penal | Homicidio culposo y lex artis | 4 | cobertura | |
+| 40 | ¿Es aplicable la prohibición de subrogados del artículo 68A del Código Penal al tipo básico de violencia contra servidor público del artículo 429, atendiendo a la finalidad y alcance de la restricción legal? | SP837-2026 | Penal | Subrogados y violencia a servidor | 4 | controversia | |
+| 41 | ¿Configura el delito de almacenamiento previsto en el artículo 218 del Código Penal la tenencia de archivos digitales de explotación sexual de menores en dispositivos personales, aunque no exista distribución o comercialización? | SP941-2026 | Penal | Almacenamiento de material ilícito | 4 | relevancia | |
+| 42 | ¿Qué criterios deben orientar la valoración del testimonio de una víctima menor de edad en delitos sexuales intrafamiliares sin convertir la protección reforzada de la niñez en una flexibilización automática de la carga probatoria? | SP1111-2026 | Penal | Testimonio de menor y prueba | 4 | controversia | |
+| 43 | ¿Qué efecto tiene la aprobación del proyecto de decisión por la Sala sobre el cómputo de la prescripción de la acción penal en segunda instancia y cómo se distingue ese hito de la lectura de la providencia? | SP1163-2026 | Penal | Prescripción y decisión colegiada | 4 | controversia | |
+| 44 | ¿Cómo se determina el incremento del término prescriptivo aplicable a los servidores públicos después de la formulación de imputación y qué reglas deben distinguirse para establecer el límite extraordinario? | SP1167-2026 | Penal | Prescripción y servidores públicos | 4 | relevancia | |
+| 45 | ¿Cuándo la conducta de suministro de una sustancia que produce incapacidad de resistir queda comprendida en el delito sexual ejecutado mediante ese mismo medio, por aplicación de la consunción y las reglas del concurso aparente? | SP1206-2026 | Penal | Consunción y concurso aparente | 5 | relevancia | |
+| 46 | ¿Qué elementos de acuerdo, permanencia y aporte permiten configurar el concierto para delinquir cuando se atribuye a un funcionario judicial una actuación coordinada con particulares para influir en decisiones institucionales? | SP1317-2026 | Penal | Concierto y acuerdo criminal | 5 | relevancia | |
+| 47 | ¿Puede configurarse cohecho propio por la aceptación indirecta de dádivas o promesas por un funcionario judicial que integra una sala colegiada, aunque el asunto no estuviera asignado a su ponencia individual? | SP1317-2026 | Penal | Cohecho y función colegiada | 5 | controversia | |
+| 48 | ¿Qué intervención funcional y qué aporte concreto deben acreditarse para atribuir al gobernador responsabilidad penal por irregularidades en la enajenación de bienes públicos adelantada mediante convenios interadministrativos? | SP2709-2024 | Penal | Enajenación y contratación estatal | 4 | utilidad | |
+| 49 | ¿La falta de acceso al recurso extraordinario de casación por no alcanzar la cuantía legal satisface el requisito de subsidiariedad de la tutela contra una providencia laboral? | STP17662-2024 | Penal | Tutela y subsidiariedad laboral | 3 | utilidad | |
+| 50 | ¿Cómo debe valorarse la inmediatez de la tutela cuando han transcurrido seis meses y dos días desde la providencia cuestionada, y qué circunstancias permiten justificar ese lapso en el caso concreto? | STP21582-2025 | Penal | Tutela e inmediatez | 3 | cobertura | |
 
 ## Firma
 
@@ -98,4 +60,3 @@ Nombre: ________________________________
 T.P.: __________________________________
 
 Fecha: _________________________________
-
